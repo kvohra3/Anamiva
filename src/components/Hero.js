@@ -1,14 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  Paper,
-  Typography,
-  Grid,
-  Link,
-  Button,
-  Slide,
-} from '@material-ui/core';
+import { Paper, Typography, Grid, Link, Button } from '@material-ui/core';
 import TextLoop from 'react-text-loop';
 
 const useStyles = makeStyles((theme) => ({
