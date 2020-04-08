@@ -141,21 +141,26 @@ export default function Navbar(props) {
   });
 
   return (
-    <div onMouseLeave={handleClose}>
+    <div onMouseEnter={handleOpen} onMouseLeave={handleClose}>
       <AppBar position="sticky" className={classes.root}>
         <Toolbar className={classes[tabsStyle]}>
-          <Grid justify={'space-between'} container>
-            <Grid xs={3} item>
+          <Grid
+            container
+            direction="row"
+            justify="space-between"
+            alignItems="center"
+          >
+            <Grid container justify="flex-start" xs item>
               <Tabs value={value}>
                 <div>{leftContent}</div>
               </Tabs>
             </Grid>
-            <Grid xs={3} item>
+            <Grid xs item>
               <Typography component="h1" variant="h3" className={classes.title}>
                 {data.title}
               </Typography>
             </Grid>
-            <Grid xs={3} item>
+            <Grid container justify="flex-end" xs item>
               <Tabs value={value}>
                 <div>{rightContent}</div>
               </Tabs>
