@@ -1,0 +1,99 @@
+{
+  "nav": {
+    "title": "Anamiva",
+    "img": "random.jpg",
+    "leftContent": [
+      {
+        "title": "About",
+        "content": [
+          {
+            "url": "/founders",
+            "title": "Meet Our Founders"
+          },
+          {
+            "title": "Our Mission",
+            "url": "/mission"
+          },
+          {
+            "title": "Meet Our Scientific Advisor:  Ranvir Singh",
+            "url": "/advisors"
+          }
+        ]
+      },
+      {
+        "title": "Learn",
+        "content": [
+          {
+            "url": "/why-gut-health",
+            "title": "Why Gut Health"
+          },
+          {
+            "url": "/blog",
+            "title": "Blog"
+          },
+          {
+            "url": "/library",
+            "title": "Library"
+          }
+        ]
+      },
+      {
+        "title": "Quiz",
+        "url": "/quiz"
+      }
+    ],
+    "rightContent": [
+      {
+        "title": "Book Appointment",
+        "url": "/appointment"
+      },
+      {
+        "title": "Shop",
+        "url": "/shop"
+      },
+      {
+        "title": "Cart",
+        "url": "/cart"
+      },
+      {
+        "title": "Account",
+        "content": [
+          {
+            "title": "Billing & Shipping",
+            "url": "/billing-and-shipping"
+          },
+          { "title": "Password", "url": "/password" },
+          { "title": "Log Out", "url": "/log-out" },
+          { "title": "Refer a Friend", "url": "/refer-a-friend" }
+        ]
+      }
+    ]
+  },
+  "hero": {
+    "title": "Title of a longer featured blog post",
+    "description": "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
+    "image": "https://source.unsplash.com/random",
+    "imgText": "main image description",
+    "linkText": "Continue reading…"
+  },
+  "threeUp": {
+    "title": "Here is the title",
+    "content": [
+      {
+        "title": "title 1",
+        "description": "Some text to describe the content",
+        "icon": "material-ui-icon"
+      },
+      {
+        "title": "title 2",
+        "description": "Some more text to describe the content",
+        "icon": "material-ui-icon"
+      },
+      {
+        "title": "title 3",
+        "description": "Some of this text to describe the content",
+        "icon": "material-ui-icon"
+      }
+    ]
+  }
+}
