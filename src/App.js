@@ -1,43 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Container } from '@material-ui/core';
-import Hero from './components/Hero';
-import Banner from './components/Banner';
-import { hero, threeUp, nav } from './data.json';
-import Navbar from './components/Navbar';
-import { StickyContainer, Sticky } from 'react-sticky';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Home from './pages/Home';
+import Quiz from './pages/Quiz';
+
+const routes = [
+  {
+    path: '/',
+    page: <Home />,
+  },
+  {
+    path: '/quiz',
+    page: <Quiz />,
+  },
+];
 
 function App() {
   return (
-    <StickyContainer>
-      <Container maxWidth={false} disableGutters={true}>
-        <Sticky>{({ style }) => <Navbar style={style} data={nav} />}</Sticky>
-        {/* <Sticky>
-          
-        </Sticky> */}
-        <main>
-          <Hero data={hero} />
-          <Banner data={threeUp} />
-          <div className="App">
-            <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>
-                Edit <code>src/App.js</code> and save to reload.
-              </p>
-              <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Learn React
-              </a>
-            </header>
-          </div>
-        </main>
-      </Container>
-    </StickyContainer>
+    <Router>
+      <div>
+        {/*
+          A <Switch> looks through all its children <Route>
+          elements and renders the first one whose path
+          matches the current URL. Use a <Switch> any time
+          you have multiple routes, but you want only one
+          of them to render at a time
+        */}
+        <Switch>
+          {routes.map((route) => (
+            <Route exact path={route.path}>
+              {route.page}
+            </Route>
+          ))}
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

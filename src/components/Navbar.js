@@ -14,39 +14,40 @@ import {
   Grid,
 } from '@material-ui/core';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    position: 'fixed',
+    background: 'transparent',
+    boxShadow: 'none',
+    color: 'black',
+  },
+  tab: {
+    '&:hover': {
+      backgroundColor: 'rgb(127, 81, 181, 0.42)',
+    },
+    'min-width': '0px',
+  },
+  tabs_top: {
+    background: 'transparent',
+    transtion: '2ms all',
+  },
+  tabs_scroll: {
+    background: 'white',
+    transtion: '2ms all',
+  },
+  title: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  popper: {
+    width: '100%',
+  },
+}));
+
 export default function Navbar(props) {
   const { data } = props;
 
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      position: 'fixed',
-      background: 'transparent',
-      boxShadow: 'none',
-      color: 'black',
-    },
-    tab: {
-      '&:hover': {
-        backgroundColor: 'rgb(127, 81, 181, 0.42)',
-      },
-      'min-width': '0px',
-    },
-    tabs_top: {
-      background: 'transparent',
-      transtion: '2ms all',
-    },
-    tabs_scroll: {
-      background: 'white',
-      transtion: '2ms all',
-    },
-    title: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    popper: {
-      width: '100%',
-    },
-  }));
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [value, setValue] = useState(null);
@@ -133,6 +134,7 @@ export default function Navbar(props) {
       ? setTabsStyle('tabs_scroll')
       : setTabsStyle('tabs_top');
   };
+
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
     window.addEventListener('scroll', listenScrollEvent);
@@ -185,3 +187,7 @@ export default function Navbar(props) {
     </div>
   );
 }
+
+Navbar.propTypes = {
+  data: PropTypes.object,
+};
