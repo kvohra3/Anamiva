@@ -10,6 +10,8 @@ import {
   Paper,
   MenuList,
   MenuItem,
+  Toolbar,
+  Grid,
 } from '@material-ui/core';
 
 export default function Navbar(props) {
@@ -21,18 +23,28 @@ export default function Navbar(props) {
       background: 'transparent',
       boxShadow: 'none',
       color: 'black',
-      height: '5000px',
     },
     tab: {
       '&:hover': {
         backgroundColor: 'rgb(127, 81, 181, 0.42)',
       },
+      'min-width': '0px',
     },
     tabs_top: {
       background: 'transparent',
+      transtion: '2ms all',
     },
     tabs_scroll: {
       background: 'white',
+      transtion: '2ms all',
+    },
+    title: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    popper: {
+      width: '100%',
     },
   }));
   const classes = useStyles();
@@ -47,10 +59,13 @@ export default function Navbar(props) {
     setValue(null);
     setAnchorEl(null);
     setItems(null);
+    setTabsStyle('tabs_top');
   };
 
   const getSubLeftContent = () => {
-    const subLinkObj = data.leftContent.reduce((acc, cv, index) => {
+    const subLinkObj = {};
+
+    data.leftContent.reduce((acc, cv, index) => {
       if (!cv.content) return acc;
       const links = cv.content.reduce((acc2, cv2) => {
         acc2.push({ ...cv2 });
@@ -58,7 +73,18 @@ export default function Navbar(props) {
       }, []);
       acc[`left-${index}`] = links;
       return acc;
-    }, {});
+    }, subLinkObj);
+
+    data.rightContent.reduce((acc, cv, index) => {
+      if (!cv.content) return acc;
+      const links = cv.content.reduce((acc2, cv2) => {
+        acc2.push({ ...cv2 });
+        return acc2;
+      }, []);
+      acc[`right-${index}`] = links;
+      return acc;
+    }, subLinkObj);
+
     return subLinkObj;
   };
 
@@ -73,6 +99,7 @@ export default function Navbar(props) {
     setOpen(true);
     setValue(id);
     setAnchorEl(currentTarget);
+    setTabsStyle('tabs_scroll');
   };
 
   const leftContent = data.leftContent.map((c, index) => {
@@ -81,6 +108,19 @@ export default function Navbar(props) {
         id={`left-${index}`}
         onMouseEnter={handleOpen}
         key={`left-${index}`}
+        label={c.title}
+        href={c.url ? c.url : null}
+        className={classes.tab}
+      />
+    );
+  });
+
+  const rightContent = data.rightContent.map((c, index) => {
+    return (
+      <Tab
+        id={`right-${index}`}
+        onMouseEnter={handleOpen}
+        key={`right-${index}`}
         label={c.title}
         href={c.url ? c.url : null}
         className={classes.tab}
@@ -101,19 +141,30 @@ export default function Navbar(props) {
   return (
     <div onMouseLeave={handleClose}>
       <AppBar position="sticky" className={classes.root}>
-        <div className={classes[tabsStyle]}>
-          <Tabs value={value} aria-label="simple tabs example">
-            {leftContent}
-            <Typography component="h1" variant="h3" align="center">
-              {data.title}
-            </Typography>
-          </Tabs>
-        </div>
+        <Toolbar className={classes[tabsStyle]}>
+          <Grid justify={'space-between'} container>
+            <Grid xs={3} item>
+              <Tabs value={value}>
+                <div>{leftContent}</div>
+              </Tabs>
+            </Grid>
+            <Grid xs={3} item>
+              <Typography component="h1" variant="h3" className={classes.title}>
+                {data.title}
+              </Typography>
+            </Grid>
+            <Grid xs={3} item>
+              <Tabs value={value}>
+                <div>{rightContent}</div>
+              </Tabs>
+            </Grid>
+          </Grid>
+        </Toolbar>
         <Popper
-          style={{ width: '100vw' }}
           open={open}
           anchorEl={anchorEl}
           placement="bottom-end"
+          className={classes.popper}
           id="menu-list-grow"
         >
           <div style={listItems ? {} : { display: 'none' }}>
