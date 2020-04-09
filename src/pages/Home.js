@@ -1,34 +1,38 @@
 import React from 'react';
-import logo from '../logo.svg';
-import './Home.css';
 import { Container } from '@material-ui/core';
 import Hero from '../components/Hero';
 import Banner from '../components/Banner';
-import { hero, threeUp, nav } from '../data.json';
+import TextCarousel from '../components/TextCarousel';
+import { hero, banner, banner2, testamonialCarousel, nav } from '../data.json';
 import Navbar from '../components/Navbar';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  test: {
+    backgroundColor: 'black',
+    backgroundSize: 'cover',
+    color: 'white',
+  },
+  main: {
+    overflowX: 'hidden',
+    overflowY: 'hidden',
+    backgroundColor: 'rgb(184,176,158)',
+  },
+}));
 
 export default function Home() {
+  const classes = useStyles();
+
   return (
-    <Container maxWidth={false} disableGutters={true}>
+    <Container maxWidth={false} disableGutters={true} className={classes.main}>
       <Navbar data={nav} />
       <main>
         <Hero data={hero} />
-        <Banner data={threeUp} />
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-          </header>
+        <Banner data={banner} />
+        <Banner data={banner2} color="white" backgroundColor="black" />
+        <TextCarousel data={testamonialCarousel} />
+        <div className={classes.test}>
+          <h1>NEXT</h1>
         </div>
       </main>
     </Container>

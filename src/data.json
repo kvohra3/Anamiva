@@ -100,7 +100,7 @@
       "url": "/shop"
     }
   },
-  "threeUp": {
+  "banner": {
     "title": "How it works?",
     "content": [
       {
@@ -117,6 +117,76 @@
         "title": "title 3",
         "description": "Some of this text to describe the content",
         "icon": "deviceHub"
+      },
+      {
+        "title": "title 4",
+        "description": "Some of this text to describe the content",
+        "icon": "dashboard"
+      }
+    ]
+  },
+  "banner2": {
+    "title": "A defensible immune system starts with prioritizing a balanced gut.",
+    "subTitle": "here is a descrption",
+    "content": [
+      {
+        "title": "No Colorants or Synthetic Fillers",
+        "icon": "deviceHub"
+      },
+      {
+        "title": "Non-GMO",
+        "icon": "deviceHub"
+      },
+      {
+        "title": "Gluten & Allergen Free",
+        "icon": "deviceHub"
+      },
+      {
+        "title": "100% Vegetarian",
+        "icon": "deviceHub"
+      },
+      {
+        "title": "Made with love in USA",
+        "icon": "deviceHub"
+      },
+      {
+        "title": "Inspired by India",
+        "icon": "deviceHub"
+      }
+    ]
+  },
+  "testamonialCarousel": {
+    "header": "Real Life Reviews",
+    "content": [
+      {
+        "stars": 4,
+        "name": "Rohan V.",
+        "testimonial": "I’ve been taking the ANAMIVA Probiotic for about a week and am already noticing my digestion has been better, especially in the mornings."
+      },
+      {
+        "stars": 5,
+        "name": "Lynda C.",
+        "testimonial": "I’ve been suffering with plantar fasciitis for years. I’ve been taking ANAMIVA for a few months now and it has helped with my inflammation."
+      },
+      {
+        "stars": 4,
+        "name": "Fred J.",
+        "testimonial": "I’ve been taking ANAMIVA Turmeric 500 tablets twice a day for about two months now and I’ve experienced a noticeable reduction in hip and knee pain. I used to take ibuprofen several times a week, but l’ve been able to cut that out completely."
+      }
+    ]
+  },
+  "blogCarousel": {
+    "header": "Blogs",
+    "content": [
+      {
+        "title": "Tumeric: An ancient healing root",
+        "date": "Feburary 28, 2019",
+        "url": "https://www.anamiva.co/blog/2019/2/4/turmeric-an-ancient-healing-root"
+      },
+      {
+        "message": "Welcome to ANAMIVA®",
+        "date": "Feburary 10, 2019",
+        "url": "https://www.anamiva.co/blog/2019/1/30/welcome-to-anamiva"
       }
     ]
   }

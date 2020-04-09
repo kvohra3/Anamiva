@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: '400px',
   },
   mainFeaturedContent: {
+    margin: 0,
     textAlign: 'center',
     position: 'relative',
     padding: theme.spacing(3),
@@ -74,7 +75,10 @@ export default function Hero(props) {
             >
               {data.title}
             </Typography>
-            <TextLoop springConfig={{ stiffness: 70, damping: 31 }}>
+            <TextLoop
+              springConfig={{ stiffness: 70, damping: 31 }}
+              adjustingSpeed={500}
+            >
               {data.textCarosuel.map((text) => (
                 <Typography
                   component="h1"

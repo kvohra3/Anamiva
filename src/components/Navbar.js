@@ -5,7 +5,6 @@ import {
   AppBar,
   Tabs,
   Tab,
-  Typography,
   Popper,
   Paper,
   MenuList,
@@ -13,6 +12,7 @@ import {
   Toolbar,
   Grid,
 } from '@material-ui/core';
+import logo from '../images/Anamiva_Logo.png';
 
 import { AccountBox, ShoppingCart, Store } from '@material-ui/icons';
 const allIcons = {
@@ -46,9 +46,15 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    fontFamily: 'Zapfino',
+    fontSize: '185%',
   },
-  popper: {
-    width: '100%',
+  logo: {
+    display: 'flex',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    width: '25%%',
+    height: '48px',
   },
 }));
 
@@ -178,9 +184,7 @@ export default function Navbar(props) {
               </Tabs>
             </Grid>
             <Grid xs item>
-              <Typography component="h1" variant="h3" className={classes.title}>
-                {data.title}
-              </Typography>
+              <img src={logo} alt="Anamiva" className={classes.logo} />
             </Grid>
             <Grid container justify="flex-end" xs item>
               <Tabs value={value}>
