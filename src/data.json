@@ -179,12 +179,38 @@
     "header": "Blogs",
     "content": [
       {
-        "title": "Tumeric: An ancient healing root",
+        "img": "https://source.unsplash.com/random",
+        "title": "1. Tumeric: An ancient healing root",
         "date": "Feburary 28, 2019",
         "url": "https://www.anamiva.co/blog/2019/2/4/turmeric-an-ancient-healing-root"
       },
       {
-        "message": "Welcome to ANAMIVA®",
+        "img": "https://source.unsplash.com/random",
+        "title": "2 .Welcome to ANAMIVA®",
+        "date": "Feburary 10, 2019",
+        "url": "https://www.anamiva.co/blog/2019/1/30/welcome-to-anamiva"
+      },
+      {
+        "img": "https://source.unsplash.com/random",
+        "title": "3. Tumeric: An ancient healing root",
+        "date": "Feburary 28, 2019",
+        "url": "https://www.anamiva.co/blog/2019/2/4/turmeric-an-ancient-healing-root"
+      },
+      {
+        "img": "https://source.unsplash.com/random",
+        "title": "4. Welcome to ANAMIVA®",
+        "date": "Feburary 10, 2019",
+        "url": "https://www.anamiva.co/blog/2019/1/30/welcome-to-anamiva"
+      },
+      {
+        "img": "https://source.unsplash.com/random",
+        "title": "5. Tumeric: An ancient healing root",
+        "date": "Feburary 28, 2019",
+        "url": "https://www.anamiva.co/blog/2019/2/4/turmeric-an-ancient-healing-root"
+      },
+      {
+        "img": "https://source.unsplash.com/random",
+        "title": "6. Welcome to ANAMIVA®",
         "date": "Feburary 10, 2019",
         "url": "https://www.anamiva.co/blog/2019/1/30/welcome-to-anamiva"
       }

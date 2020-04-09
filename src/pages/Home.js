@@ -1,10 +1,19 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
+import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Banner from '../components/Banner';
 import TextCarousel from '../components/TextCarousel';
-import { hero, banner, banner2, testamonialCarousel, nav } from '../data.json';
-import Navbar from '../components/Navbar';
+import CardCarousel from '../components/CardCarousel';
+import {
+  hero,
+  banner,
+  banner2,
+  testamonialCarousel,
+  blogCarousel,
+  nav,
+} from '../data.json';
+
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -31,6 +40,7 @@ export default function Home() {
         <Banner data={banner} />
         <Banner data={banner2} color="white" backgroundColor="black" />
         <TextCarousel data={testamonialCarousel} />
+        <CardCarousel data={blogCarousel} />
         <div className={classes.test}>
           <h1>NEXT</h1>
         </div>
