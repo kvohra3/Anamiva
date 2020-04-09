@@ -14,6 +14,13 @@ import {
   Grid,
 } from '@material-ui/core';
 
+import { AccountBox, ShoppingCart, Store } from '@material-ui/icons';
+const allIcons = {
+  acctBox: <AccountBox />,
+  shopCart: <ShoppingCart />,
+  store: <Store />,
+};
+
 const useStyles = makeStyles((theme) => ({
   root: {
     position: 'fixed',
@@ -29,11 +36,11 @@ const useStyles = makeStyles((theme) => ({
   },
   tabs_top: {
     background: 'transparent',
-    transtion: '2ms all',
+    transition: 'background-color 0.5s ease',
   },
   tabs_scroll: {
     background: 'white',
-    transtion: '2ms all',
+    transition: 'background-color 0.5s ease',
   },
   title: {
     display: 'flex',
@@ -110,6 +117,7 @@ export default function Navbar(props) {
         onMouseEnter={handleOpen}
         key={`left-${index}`}
         label={c.title}
+        title={c.title}
         href={c.url ? c.url : null}
         className={classes.tab}
       />
@@ -117,12 +125,26 @@ export default function Navbar(props) {
   });
 
   const rightContent = data.rightContent.map((c, index) => {
+    if (c.icon) {
+      return (
+        <Tab
+          id={`right-${index}`}
+          onMouseEnter={handleOpen}
+          key={`right-${index}`}
+          icon={allIcons[c.icon]}
+          title={c.title}
+          href={c.url ? c.url : null}
+          className={classes.tab}
+        />
+      );
+    }
     return (
       <Tab
         id={`right-${index}`}
         onMouseEnter={handleOpen}
         key={`right-${index}`}
         label={c.title}
+        title={c.title}
         href={c.url ? c.url : null}
         className={classes.tab}
       />

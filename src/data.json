@@ -49,14 +49,17 @@
       },
       {
         "title": "Shop",
+        "icon": "store",
         "url": "/shop"
       },
       {
         "title": "Cart",
+        "icon": "shopCart",
         "url": "/cart"
       },
       {
         "title": "Account",
+        "icon": "acctBox",
         "content": [
           {
             "title": "Billing & Shipping",
@@ -98,22 +101,22 @@
     }
   },
   "threeUp": {
-    "title": "How it works",
+    "title": "How it works?",
     "content": [
       {
         "title": "title 1",
-        "description": "Some text to describe the content",
-        "icon": "material-ui-icon"
+        "description": "Some text to describe the content.ome text to describe the content.ome text to describe the content.ome text to describe the content.ome text to describe the content",
+        "icon": "allInclusive"
       },
       {
         "title": "title 2",
         "description": "Some more text to describe the content",
-        "icon": "material-ui-icon"
+        "icon": "chargingBatteryFull"
       },
       {
         "title": "title 3",
         "description": "Some of this text to describe the content",
-        "icon": "material-ui-icon"
+        "icon": "deviceHub"
       }
     ]
   }

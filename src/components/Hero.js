@@ -74,7 +74,7 @@ export default function Hero(props) {
             >
               {data.title}
             </Typography>
-            <TextLoop>
+            <TextLoop springConfig={{ stiffness: 70, damping: 31 }}>
               {data.textCarosuel.map((text) => (
                 <Typography
                   component="h1"
