@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Typography, Grid, Link, Button } from '@material-ui/core';
 import TextLoop from 'react-text-loop';
+import background from '../images/Tumeric_1296x728-header.jpg';
 
 const useStyles = makeStyles((theme) => ({
   mainFeatured: {
     position: 'relative',
     color: theme.palette.common.white,
     // textAlign: 'center',
-    backgroundImage: 'url(https://source.unsplash.com/random)',
+    backgroundImage: `url(${background})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     color: 'white',
+    fontWeight: 'bold',
   },
   button: {
     display: 'inline-block',
@@ -35,12 +37,13 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 0.3em 0.3em 0',
     borderRadius: '2em',
     textDecoration: 'none',
-    color: '#FFFFFF',
-    backgroundColor: '#4eb5f1',
     textAlign: 'center',
-    textTransform: 'capitalize',
+    textTransform: 'none',
+    backgroundColor: 'black',
+    color: 'white',
     '&:hover': {
-      'background-color': '#4095c6',
+      backgroundColor: 'white',
+      color: 'black',
     },
   },
   items: {
@@ -58,11 +61,7 @@ export default function Hero(props) {
   const { data } = props;
 
   return (
-    <Paper
-      elevation={0}
-      className={classes.mainFeatured}
-      style={{ backgroundImage: `url(${data.image})` }}
-    >
+    <Paper elevation={0} className={classes.mainFeatured}>
       <Grid container spacing={3} direction="column" justify="center">
         <div className={classes.mainFeaturedContent}>
           <Grid className={classes.items} xs item>
@@ -75,23 +74,25 @@ export default function Hero(props) {
             >
               {data.title}
             </Typography>
-            <TextLoop
-              springConfig={{ stiffness: 70, damping: 31 }}
-              adjustingSpeed={500}
-            >
-              {data.textCarosuel.map((text) => (
-                <Typography
-                  component="h1"
-                  variant="h2"
-                  color="inherit"
-                  gutterBottom
-                  className={classes.textCarosuel}
-                >
-                  {text}
-                </Typography>
-              ))}
-            </TextLoop>
           </Grid>
+          <TextLoop
+            springConfig={{ stiffness: 180, damping: 8 }}
+            adjustingSpeed={1000}
+            mask={true}
+            fade={false}
+          >
+            {data.textCarosuel.map((text) => (
+              <Typography
+                component="h1"
+                variant="h2"
+                color="inherit"
+                gutterBottom
+                className={classes.textCarosuel}
+              >
+                {text}
+              </Typography>
+            ))}
+          </TextLoop>
           <Grid className={classes.items} xs item>
             <Button
               className={classes.button}
@@ -114,7 +115,6 @@ export default function Hero(props) {
               underline="always"
               variant="h6"
               href={data.link.url}
-              style={{ fontWeight: 'bold' }}
             >
               {data.link.title}
             </Link>

@@ -45,6 +45,7 @@
     "rightContent": [
       {
         "title": "Book Appointment",
+        "icon": "event",
         "url": "/appointment"
       },
       {
@@ -127,7 +128,7 @@
   },
   "banner2": {
     "title": "A defensible immune system starts with prioritizing a balanced gut.",
-    "subTitle": "here is a descrption",
+    "subTitle": "Taking inspiration from its root meaning — free from disease — we are intensely focused on naturally restoring, rebuilding & recalibrating your microbiome. ",
     "content": [
       {
         "title": "No Colorants or Synthetic Fillers",
@@ -156,7 +157,7 @@
     ]
   },
   "testamonialCarousel": {
-    "header": "Real Life Reviews",
+    "header": "Success Stories",
     "content": [
       {
         "stars": 4,
@@ -179,37 +180,37 @@
     "header": "Blogs",
     "content": [
       {
-        "img": "https://source.unsplash.com/random",
+        "img": "https://images.squarespace-cdn.com/content/v1/5ba553802727be3c427ab6c4/1549511509687-PXKOTS188XLAVCP7N1W0/ke17ZwdGBToddI8pDm48kFmfxoboNKufWj-55Bgmc-J7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iXS6XmVv7bUJ418E8Yoc1hjuviiiZmrL38w1ymUdqq4JaGeFUxjM-HeS7Oc-SSFcg/image-asset.jpeg",
         "title": "1. Tumeric: An ancient healing root",
         "date": "Feburary 28, 2019",
         "url": "https://www.anamiva.co/blog/2019/2/4/turmeric-an-ancient-healing-root"
       },
       {
-        "img": "https://source.unsplash.com/random",
+        "img": "https://images.squarespace-cdn.com/content/v1/5ba553802727be3c427ab6c4/1548876207237-ZU5EM99WIJD7AFIJ7M4I/ke17ZwdGBToddI8pDm48kAK9D2pih78_o_AF3nc6YYhZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIHITShyPas9SootZ9iK1lmkLRfhbTfAxqGN7vILWmu9Q/Anamiva.png",
         "title": "2 .Welcome to ANAMIVA®",
         "date": "Feburary 10, 2019",
         "url": "https://www.anamiva.co/blog/2019/1/30/welcome-to-anamiva"
       },
       {
-        "img": "https://source.unsplash.com/random",
+        "img": "https://images.squarespace-cdn.com/content/v1/5ba553802727be3c427ab6c4/1549511509687-PXKOTS188XLAVCP7N1W0/ke17ZwdGBToddI8pDm48kFmfxoboNKufWj-55Bgmc-J7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iXS6XmVv7bUJ418E8Yoc1hjuviiiZmrL38w1ymUdqq4JaGeFUxjM-HeS7Oc-SSFcg/image-asset.jpeg",
         "title": "3. Tumeric: An ancient healing root",
         "date": "Feburary 28, 2019",
         "url": "https://www.anamiva.co/blog/2019/2/4/turmeric-an-ancient-healing-root"
       },
       {
-        "img": "https://source.unsplash.com/random",
+        "img": "https://images.squarespace-cdn.com/content/v1/5ba553802727be3c427ab6c4/1548876207237-ZU5EM99WIJD7AFIJ7M4I/ke17ZwdGBToddI8pDm48kAK9D2pih78_o_AF3nc6YYhZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIHITShyPas9SootZ9iK1lmkLRfhbTfAxqGN7vILWmu9Q/Anamiva.png",
         "title": "4. Welcome to ANAMIVA®",
         "date": "Feburary 10, 2019",
         "url": "https://www.anamiva.co/blog/2019/1/30/welcome-to-anamiva"
       },
       {
-        "img": "https://source.unsplash.com/random",
+        "img": "https://images.squarespace-cdn.com/content/v1/5ba553802727be3c427ab6c4/1549511509687-PXKOTS188XLAVCP7N1W0/ke17ZwdGBToddI8pDm48kFmfxoboNKufWj-55Bgmc-J7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iXS6XmVv7bUJ418E8Yoc1hjuviiiZmrL38w1ymUdqq4JaGeFUxjM-HeS7Oc-SSFcg/image-asset.jpeg",
         "title": "5. Tumeric: An ancient healing root",
         "date": "Feburary 28, 2019",
         "url": "https://www.anamiva.co/blog/2019/2/4/turmeric-an-ancient-healing-root"
       },
       {
-        "img": "https://source.unsplash.com/random",
+        "img": "https://images.squarespace-cdn.com/content/v1/5ba553802727be3c427ab6c4/1548876207237-ZU5EM99WIJD7AFIJ7M4I/ke17ZwdGBToddI8pDm48kAK9D2pih78_o_AF3nc6YYhZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIHITShyPas9SootZ9iK1lmkLRfhbTfAxqGN7vILWmu9Q/Anamiva.png",
         "title": "6. Welcome to ANAMIVA®",
         "date": "Feburary 10, 2019",
         "url": "https://www.anamiva.co/blog/2019/1/30/welcome-to-anamiva"

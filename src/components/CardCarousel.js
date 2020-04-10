@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons';
 import {
-  Container,
   Grid,
-  Slide,
   Typography,
   Card,
   CardActionArea,
@@ -13,10 +12,20 @@ import {
   CardMedia,
   Button,
 } from '@material-ui/core';
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext,
+} from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    backgroundColor: 'black',
+    color: 'white',
   },
   container: {
     textAlign: 'center',
@@ -34,64 +43,80 @@ const useStyles = makeStyles((theme) => ({
     height: 50,
     padding: theme.spacing(4),
   },
-  carousel: {
+  carouselGrid: {
     display: 'flex',
     marginLeft: 'auto',
     marginRight: 'auto',
   },
-  quote: {
-    fontFamily: 'Sentinel-Medium',
-    color: '#B88E5C',
-    fontSize: '74px',
-  },
   cardRoot: {
-    maxWidth: 345,
     backgroundColor: 'black',
+    margin: '3%',
+  },
+  gridItem: {
+    color: 'white',
+    width: '100%',
+  },
+  slider: {
+    display: 'inline-flex',
+  },
+  buttons: {
+    borderRadius: '0px',
+    height: '50%',
+    textAlign: 'center',
+    marginTop: 'auto',
+    marginBottom: 'auto',
+    color: 'white',
+    border: 'none',
+    background: 'none',
+    '&:hover': {
+      opacity: 0.75,
+    },
+  },
+  button: {
+    textTransform: 'none',
+    borderColor: 'white',
+    color: 'white',
+    '&:hover': {
+      backgroundColor: 'white',
+      color: 'black',
+    },
+  },
+  nonScrollableBlog: {
+    width: '100%',
+    display: 'inline-flex',
+  },
+  displayNone: {
+    display: 'none',
+  },
+  links: {
+    display: 'block',
   },
   media: {
-    height: 140,
+    height: '20vw',
+  },
+  mediaNonScrollable: {
+    height: '20vw',
+    width: '45vw',
   },
 }));
 export default function CardCarousel(props) {
-  const { data } = props;
+  const { data, step, cardsShown } = props;
+
   const classes = useStyles();
-  const TIMEOUT = 3000;
-  const SLIDETIME = 1000;
 
-  const carouselData = data.content;
-
-  const [activeStep, setActiveStep] = useState(0);
-  const [elementIn, setElementIn] = useState(true);
-  const [direction, setDirection] = useState('left');
+  const [autoPlay, setAutoPlay] = useState(false);
 
   useEffect(() => {
-    const id = setTimeout(() => {
-      setDirection('right');
-      setElementIn(false);
-    }, TIMEOUT);
-    return () => clearTimeout(id);
-  }, [activeStep]);
-
-  const handleEnd = (node, done) => {
-    node.addEventListener('transitionstart', showNext, false);
-  };
-
-  const showNext = () => {
-    if (!elementIn) {
-      const next = (activeStep + 1) % carouselData.length;
-      setTimeout(() => {
-        setActiveStep(next);
-        setDirection('left');
-        setElementIn(true);
-      }, SLIDETIME);
-    }
-  };
+    setTimeout(() => setAutoPlay(true), 5000);
+  });
 
   const blogCards = data.content.map((card) => (
     <Card className={classes.cardRoot}>
       <CardActionArea href={card.url}>
         <CardMedia
-          className={classes.media}
+          className={
+            data.content.length > 2 ? classes.media : classes.mediaNonScrollable
+          }
           image={card.img}
           title={card.title}
         />
@@ -114,11 +139,11 @@ export default function CardCarousel(props) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
+      <CardActions className={classes.links}>
+        <Button variant="outlined" className={classes.button}>
           Share
         </Button>
-        <Button size="small" color="primary" href={card.url}>
+        <Button variant="outlined" href={card.url} className={classes.button}>
           Read More
         </Button>
       </CardActions>
@@ -138,18 +163,35 @@ export default function CardCarousel(props) {
             {data.header}
           </Typography>
         </Grid>
+        <Grid item xs className={classes.carouselGrid} justify="stretch">
+          {blogCards.length > 2 ? (
+            <CarouselProvider
+              isIntrinsicHeight={true}
+              totalSlides={blogCards.length}
+              interval={5000}
+              step={step}
+              visibleSlides={cardsShown}
+              isPlaying={autoPlay}
+              infinite={true}
+            >
+              <div className={classes.slider}>
+                <ButtonBack className={classes.buttons}>
+                  <KeyboardArrowLeft />
+                </ButtonBack>
+                <Slider>
+                  {blogCards.map((bc, index) => (
+                    <Slide index={index}>{bc}</Slide>
+                  ))}
+                </Slider>
 
-        <Grid item xs className={classes.carousel} justify="center">
-          <div className={classes.quote}>"</div>
-          <Slide
-            direction={direction}
-            in={elementIn}
-            addEndListener={handleEnd}
-            timeout={{ enter: SLIDETIME, exit: SLIDETIME }}
-          >
-            {blogCards[activeStep]}
-          </Slide>
-          <div className={classes.quote}>"</div>
+                <ButtonNext className={classes.buttons}>
+                  <KeyboardArrowRight />
+                </ButtonNext>
+              </div>
+            </CarouselProvider>
+          ) : (
+            <div className={classes.nonScrollableBlog}>{blogCards}</div>
+          )}
         </Grid>
       </Grid>
     </div>

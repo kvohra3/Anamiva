@@ -23,7 +23,7 @@ export default function Banner(props) {
       textAlign: 'center',
       justifyContent: 'center',
       boxSizing: 'border-box',
-      padding: '32px 28px 96px',
+      padding: '0px 28px 96px',
       color: color ? color : 'black',
       backgroundColor: backgroundColor ? backgroundColor : 'rgb(184,176,158)',
     },
@@ -31,6 +31,7 @@ export default function Banner(props) {
       width: '100%',
       position: 'relative',
       padding: theme.spacing(3),
+      paddingTop: '0px',
       [theme.breakpoints.up('md')]: {
         padding: theme.spacing(6),
         paddingRight: 0,

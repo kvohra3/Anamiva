@@ -14,11 +14,12 @@ import {
 } from '@material-ui/core';
 import logo from '../images/Anamiva_Logo.png';
 
-import { AccountBox, ShoppingCart, Store } from '@material-ui/icons';
+import { AccountBox, ShoppingCart, Store, Event } from '@material-ui/icons';
 const allIcons = {
   acctBox: <AccountBox />,
   shopCart: <ShoppingCart />,
   store: <Store />,
+  event: <Event />,
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -159,8 +160,8 @@ export default function Navbar(props) {
 
   const listenScrollEvent = () => {
     window.scrollY > 10
-      ? setTabsStyle('tabs_scroll')
-      : setTabsStyle('tabs_top');
+      ? setTabsStyle('tabs_top')
+      : setTabsStyle('tabs_scroll');
   };
 
   // Similar to componentDidMount and componentDidUpdate:

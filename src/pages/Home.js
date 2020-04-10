@@ -40,10 +40,7 @@ export default function Home() {
         <Banner data={banner} />
         <Banner data={banner2} color="white" backgroundColor="black" />
         <TextCarousel data={testamonialCarousel} />
-        <CardCarousel data={blogCarousel} />
-        <div className={classes.test}>
-          <h1>NEXT</h1>
-        </div>
+        <CardCarousel data={blogCarousel} step={2} cardsShown={2} />
       </main>
     </Container>
   );

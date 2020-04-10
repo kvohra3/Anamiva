@@ -1,8 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Grid, Slide, Typography, Paper } from '@material-ui/core';
+import { Container, Grid, Typography, Paper } from '@material-ui/core';
 import { Star, StarBorder } from '@material-ui/icons';
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext,
+} from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,13 +32,7 @@ const useStyles = makeStyles((theme) => ({
     height: 50,
     padding: theme.spacing(4),
   },
-  carouselContainer: {
-    width: '50%',
-    height: '50%',
-    marginLeft: '0px',
-    marginRight: '0px',
-  },
-  carousel: {
+  carouselGrid: {
     display: 'flex',
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -40,20 +42,14 @@ const useStyles = makeStyles((theme) => ({
     color: '#B88E5C',
     fontSize: '74px',
   },
-  img: {
-    height: 255,
-    maxWidth: 400,
-    overflow: 'hidden',
-    display: 'block',
-    width: '100%',
+  buttons: {
+    display: 'none',
   },
 }));
 
 export default function TextCarousel(props) {
   const { data } = props;
   const classes = useStyles();
-  const TIMEOUT = 3000;
-  const SLIDETIME = 1000;
 
   const stars = [
     <StarBorder />,
@@ -69,35 +65,52 @@ export default function TextCarousel(props) {
       return s;
     });
     person.rating = rating;
-    return person;
+    return (
+      <Container>
+        <Grid
+          container
+          direction="column"
+          justify="space-around"
+          alignItems="center"
+        >
+          <Grid item xs>
+            <Paper
+              elevation={0}
+              style={{
+                height: '15vh',
+                width: 'auto',
+                backgroundColor: 'rgb(184,176,158)',
+              }}
+            >
+              <Typography
+                component="h5"
+                variant="h5"
+                style={{
+                  fontSize: 'initial',
+                }}
+              >
+                {person.testimonial}
+              </Typography>
+            </Paper>
+          </Grid>
+          <Grid item xs>
+            <Typography
+              component="h5"
+              variant="h5"
+              style={{
+                fontSize: 'initial',
+              }}
+            >
+              - {person.name}
+            </Typography>
+          </Grid>
+          <Grid item xs>
+            {person.rating}
+          </Grid>
+        </Grid>
+      </Container>
+    );
   });
-
-  const [activeStep, setActiveStep] = useState(0);
-  const [elementIn, setElementIn] = useState(true);
-  const [direction, setDirection] = useState('left');
-
-  useEffect(() => {
-    const id = setTimeout(() => {
-      setDirection('right');
-      setElementIn(false);
-    }, TIMEOUT);
-    return () => clearTimeout(id);
-  }, [activeStep]);
-
-  const handleEnd = (node, done) => {
-    node.addEventListener('transitionstart', showNext, false);
-  };
-
-  const showNext = () => {
-    if (!elementIn) {
-      const next = (activeStep + 1) % carouselData.length;
-      setTimeout(() => {
-        setActiveStep(next);
-        setDirection('left');
-        setElementIn(true);
-      }, SLIDETIME);
-    }
-  };
 
   return (
     <div className={classes.root}>
@@ -113,46 +126,59 @@ export default function TextCarousel(props) {
           </Typography>
         </Grid>
 
-        <Grid item xs className={classes.carousel} justify="center">
-          <div className={classes.quote}>"</div>
-          <Slide
-            direction={direction}
-            in={elementIn}
-            addEndListener={handleEnd}
-            timeout={{ enter: SLIDETIME, exit: SLIDETIME }}
+        <Grid item xs className={classes.carouselGrid} justify="center">
+          <CarouselProvider
+            isIntrinsicHeight={true}
+            totalSlides={carouselData.length}
+            interval={3000}
+            infinite={true}
+            isPlaying={true}
           >
-            <Container className={classes.carouselContainer}>
-              <Paper
-                elevation={0}
-                style={{
-                  height: '15vh',
-                  width: 'auto',
-                  backgroundColor: 'rgb(184,176,158)',
-                }}
-              >
+            <Grid
+              container
+              direction="row"
+              justify="space-between"
+              alignItems="center"
+              style={{
+                display: 'inline-flex',
+              }}
+            >
+              <Grid item xs>
                 <Typography
-                  component="h5"
-                  variant="h5"
+                  component="p"
+                  variant="h1"
+                  className={classes.quote}
                   style={{
-                    fontSize: 'large',
+                    textAlign: 'right',
                   }}
                 >
-                  {carouselData[activeStep].testimonial}
+                  "
                 </Typography>
-              </Paper>
-              <Typography
-                component="h5"
-                variant="h5"
-                style={{
-                  fontSize: 'large',
-                }}
-              >
-                - {carouselData[activeStep].name}
-              </Typography>
-              {carouselData[activeStep].rating}
-            </Container>
-          </Slide>
-          <div className={classes.quote}>"</div>
+              </Grid>
+              <Grid item xs>
+                <Slider>
+                  {carouselData.map((cd, index) => (
+                    <Slide index={index}>{cd}</Slide>
+                  ))}
+                </Slider>
+              </Grid>
+              <Grid item xs>
+                <Typography
+                  component="p"
+                  variant="h1"
+                  className={classes.quote}
+                  style={{
+                    textAlign: 'left',
+                  }}
+                >
+                  "
+                </Typography>
+              </Grid>
+            </Grid>
+
+            <ButtonBack className={classes.buttons}>Back</ButtonBack>
+            <ButtonNext className={classes.buttons}>Next</ButtonNext>
+          </CarouselProvider>
         </Grid>
       </Grid>
     </div>
