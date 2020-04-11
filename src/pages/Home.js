@@ -23,7 +23,9 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   main: {
-    fontFamily: "Georgia",
+    overflowX: "hidden",
+    overflowY: "hidden",
+    backgroundColor: "rgb(184,176,158)",
   },
 }));
 
