@@ -45,12 +45,10 @@
     "rightContent": [
       {
         "title": "Book Appointment",
-        "icon": "event",
         "url": "/appointment"
       },
       {
         "title": "Shop",
-        "icon": "store",
         "url": "/shop"
       },
       {

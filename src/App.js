@@ -37,45 +37,45 @@ function ScrollToTop() {
 
 let theme = createMuiTheme({
   typography: {
-    fontFamily: "Georgia",
+    fontFamily: "Futura",
     h1: {
-      fontFamily: "Georgia",
+      fontFamily: "Futura",
     },
     h2: {
-      fontFamily: "Georgia",
+      fontFamily: "Futura",
     },
     h3: {
-      fontFamily: "Georgia",
+      fontFamily: "Futura",
     },
     h4: {
-      fontFamily: "Georgia",
+      fontFamily: "Futura",
     },
     h5: {
-      fontFamily: "Georgia",
+      fontFamily: "Futura",
     },
     h6: {
-      fontFamily: "Georgia",
+      fontFamily: "Futura",
     },
     subtitle1: {
-      fontFamily: "Georgia",
+      fontFamily: "Futura",
     },
     subtitle2: {
-      fontFamily: "Georgia",
+      fontFamily: "Futura",
     },
     body1: {
-      fontFamily: "Georgia",
+      fontFamily: "Futura",
     },
     body2: {
-      fontFamily: "Georgia",
+      fontFamily: "Futura",
     },
     button: {
-      fontFamily: "Georgia",
+      fontFamily: "Futura",
     },
     caption: {
-      fontFamily: "Georgia",
+      fontFamily: "Futura",
     },
     overline: {
-      fontFamily: "Georgia",
+      fontFamily: "Futura",
     },
   },
 });

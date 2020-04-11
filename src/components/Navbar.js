@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     borderTop: "thin solid black",
   },
   tab: {
-    fontFamily: "Future Bold",
+    fontFamily: "Futura-Bold",
     textTransform: "none",
     fontSize: "large",
     "&:hover": {
@@ -73,8 +73,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "larger",
     fontWeight: "bold",
     textAlign: "center",
+    display: "inline-block",
     "&:hover": {
-      textDecoration: "underline #F1BF1A",
+      borderBottom: "2px solid #F1BF1A",
     },
   },
 }));
