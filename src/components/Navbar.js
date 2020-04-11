@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   AppBar,
   Tabs,
   Tab,
-  Popper,
   Paper,
-  MenuList,
-  MenuItem,
+  Container,
   Toolbar,
   Grid,
-} from '@material-ui/core';
-import logo from '../images/Anamiva_Logo.png';
+  Typography,
+} from "@material-ui/core";
+import logo from "../images/Anamiva_Logo.png";
 
-import { AccountBox, ShoppingCart, Store, Event } from '@material-ui/icons';
+import { AccountBox, ShoppingCart, Store, Event } from "@material-ui/icons";
 const allIcons = {
   acctBox: <AccountBox />,
   shopCart: <ShoppingCart />,
@@ -24,38 +23,59 @@ const allIcons = {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    position: 'fixed',
-    background: 'transparent',
-    boxShadow: 'none',
-    color: 'black',
+    position: "fixed",
+    background: "transparent",
+    boxShadow: "none",
+    color: "black",
+  },
+  menuContainer: {
+    borderRadius: "0px",
+    borderTop: "thin solid black",
   },
   tab: {
-    '&:hover': {
-      backgroundColor: 'rgb(127, 81, 181, 0.42)',
+    fontFamily: "Future Bold",
+    textTransform: "none",
+    fontSize: "large",
+    "&:hover": {
+      borderBottom: "2px solid #F1BF1A",
     },
-    'min-width': '0px',
+    "min-width": "0px",
   },
   tabs_top: {
-    background: 'transparent',
-    transition: 'background-color 0.5s ease',
+    background: "transparent",
+    transition: "background-color 0.5s ease",
   },
   tabs_scroll: {
-    background: 'white',
-    transition: 'background-color 0.5s ease',
+    background: "white",
+    transition: "background-color 0.5s ease",
   },
   title: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontFamily: 'Zapfino',
-    fontSize: '185%',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontFamily: "Zapfino",
+    fontSize: "185%",
   },
   logo: {
-    display: 'flex',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    width: '25%%',
-    height: '48px',
+    display: "flex",
+    marginLeft: "auto",
+    marginRight: "auto",
+    width: "25%%",
+    height: "48px",
+  },
+  menuPaper: {
+    borderRadius: "0px",
+    height: "10vw",
+    display: "flex",
+    margin: "auto",
+  },
+  menuItem: {
+    fontSize: "larger",
+    fontWeight: "bold",
+    textAlign: "center",
+    "&:hover": {
+      textDecoration: "underline #F1BF1A",
+    },
   },
 }));
 
@@ -63,18 +83,15 @@ export default function Navbar(props) {
   const { data } = props;
 
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState(null);
+
   const [value, setValue] = useState(null);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [listItems, setItems] = useState(null);
-  const [tabsStyle, setTabsStyle] = useState('tabs_top');
 
   const handleClose = (event) => {
     setOpen(false);
     setValue(null);
-    setAnchorEl(null);
     setItems(null);
-    setTabsStyle('tabs_top');
   };
 
   const getSubLeftContent = () => {
@@ -113,8 +130,6 @@ export default function Navbar(props) {
     setItems(listItems);
     setOpen(true);
     setValue(id);
-    setAnchorEl(currentTarget);
-    setTabsStyle('tabs_scroll');
   };
 
   const leftContent = data.leftContent.map((c, index) => {
@@ -158,29 +173,22 @@ export default function Navbar(props) {
     );
   });
 
-  const listenScrollEvent = () => {
-    window.scrollY > 10
-      ? setTabsStyle('tabs_top')
-      : setTabsStyle('tabs_scroll');
-  };
-
-  // Similar to componentDidMount and componentDidUpdate:
-  useEffect(() => {
-    window.addEventListener('scroll', listenScrollEvent);
-  });
-
   return (
-    <div onMouseEnter={handleOpen} onMouseLeave={handleClose}>
+    <div
+      className={classes.page}
+      onMouseEnter={handleOpen}
+      // onMouseLeave={handleClose}
+    >
       <AppBar position="sticky" className={classes.root}>
-        <Toolbar className={classes[tabsStyle]}>
+        <Toolbar className={classes.tabs_scroll}>
           <Grid
             container
             direction="row"
             justify="space-between"
             alignItems="center"
           >
-            <Grid container justify="flex-start" xs item>
-              <Tabs value={value}>
+            <Grid container justify="space-evenly" alignItems="center" xs item>
+              <Tabs value={value} style={{ width: "100%" }}>
                 <div>{leftContent}</div>
               </Tabs>
             </Grid>
@@ -194,27 +202,50 @@ export default function Navbar(props) {
             </Grid>
           </Grid>
         </Toolbar>
-        <Popper
-          open={open}
-          anchorEl={anchorEl}
-          placement="bottom-end"
-          className={classes.popper}
-          id="menu-list-grow"
+        <Typography
+          component="div"
+          className={classes.menuContainer}
+          hidden={!open}
         >
-          <div style={listItems ? {} : { display: 'none' }}>
-            <Paper>
-              <MenuList>
-                {listItems
-                  ? listItems.map((d) => {
-                      return (
-                        <MenuItem onClick={handleClose}>{d.title}</MenuItem>
-                      );
-                    })
-                  : null}
-              </MenuList>
-            </Paper>
-          </div>
-        </Popper>
+          {open && (
+            <div style={listItems ? {} : { display: "none" }}>
+              <Paper elevation={3} className={classes.menuPaper}>
+                <Container
+                  style={{ margin: "auto", textAlign: "center", width: "50%" }}
+                >
+                  <Grid
+                    container
+                    direction="row"
+                    justify="center"
+                    alignItems="center"
+                  >
+                    {listItems
+                      ? listItems.map((d, i) => {
+                          return (
+                            <Grid item xs onClick={handleClose}>
+                              <div
+                                style={{
+                                  margin: "auto",
+                                }}
+                              >
+                                <Typography
+                                  component="h4"
+                                  variant="h4"
+                                  className={classes.menuItem}
+                                >
+                                  {d.title}
+                                </Typography>
+                              </div>
+                            </Grid>
+                          );
+                        })
+                      : null}
+                  </Grid>
+                </Container>
+              </Paper>
+            </div>
+          )}
+        </Typography>
       </AppBar>
     </div>
   );

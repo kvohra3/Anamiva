@@ -1,10 +1,10 @@
-import React from 'react';
-import { Container } from '@material-ui/core';
-import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import Banner from '../components/Banner';
-import TextCarousel from '../components/TextCarousel';
-import CardCarousel from '../components/CardCarousel';
+import React from "react";
+import { Container } from "@material-ui/core";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import Banner from "../components/Banner";
+import TextCarousel from "../components/TextCarousel";
+import CardCarousel from "../components/CardCarousel";
 import {
   hero,
   banner,
@@ -12,20 +12,18 @@ import {
   testamonialCarousel,
   blogCarousel,
   nav,
-} from '../data.json';
+} from "../data.json";
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   test: {
-    backgroundColor: 'black',
-    backgroundSize: 'cover',
-    color: 'white',
+    backgroundColor: "black",
+    backgroundSize: "cover",
+    color: "white",
   },
   main: {
-    overflowX: 'hidden',
-    overflowY: 'hidden',
-    backgroundColor: 'rgb(184,176,158)',
+    fontFamily: "Georgia",
   },
 }));
 
@@ -35,7 +33,7 @@ export default function Home() {
   return (
     <Container maxWidth={false} disableGutters={true} className={classes.main}>
       <Navbar data={nav} />
-      <main>
+      <main className={classes.main}>
         <Hero data={hero} />
         <Banner data={banner} />
         <Banner data={banner2} color="white" backgroundColor="black" />
