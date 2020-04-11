@@ -10,8 +10,9 @@ import {
   responsiveFontSizes,
   ThemeProvider,
 } from "@material-ui/core/styles";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import Quiz from "./pages/Quiz";
+import Shop from "./pages/Shop/Shop";
 
 const routes = [
   {
@@ -21,6 +22,10 @@ const routes = [
   {
     path: "/quiz",
     page: <Quiz />,
+  },
+  {
+    path: "/shop",
+    page: <Shop />,
   },
 ];
 

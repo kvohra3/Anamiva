@@ -1,10 +1,10 @@
 import React from "react";
 import { Container } from "@material-ui/core";
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import Banner from "../components/Banner";
-import TextCarousel from "../components/TextCarousel";
-import CardCarousel from "../components/CardCarousel";
+import Navbar from "../../components/Navbar";
+import Hero from "../../components/Hero";
+import Banner from "../../components/Banner";
+import TextCarousel from "../../components/TextCarousel";
+import CardCarousel from "../../components/CardCarousel";
 import {
   hero,
   banner,
@@ -12,7 +12,7 @@ import {
   testamonialCarousel,
   blogCarousel,
   nav,
-} from "../data.json";
+} from "./data.json";
 
 import { makeStyles } from "@material-ui/core/styles";
 

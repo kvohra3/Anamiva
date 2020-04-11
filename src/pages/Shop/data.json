@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "leftContent": [
+      {
+        "title": "About",
+        "content": [
+          {
+            "url": "/founders",
+            "title": "Meet Our Founders"
+          },
+          {
+            "title": "Our Mission",
+            "url": "/mission"
+          },
+          {
+            "title": "Meet Our Scientific Advisor:  Ranvir Singh",
+            "url": "/advisors"
+          }
+        ]
+      },
+      {
+        "title": "Learn",
+        "content": [
+          {
+            "url": "/why-gut-health",
+            "title": "Why Gut Health"
+          },
+          {
+            "url": "/blog",
+            "title": "Blog"
+          },
+          {
+            "url": "/library",
+            "title": "Library"
+          }
+        ]
+      },
+      {
+        "title": "Quiz",
+        "url": "/quiz"
+      }
+    ],
+    "rightContent": [
+      {
+        "title": "Book Appointment",
+        "url": "/appointment"
+      },
+      {
+        "title": "Shop",
+        "url": "/shop"
+      },
+      {
+        "title": "Cart",
+        "icon": "shopCart",
+        "url": "/cart"
+      },
+      {
+        "title": "Account",
+        "icon": "acctBox",
+        "content": [
+          {
+            "title": "Billing & Shipping",
+            "url": "/billing-and-shipping"
+          },
+          { "title": "Password", "url": "/password" },
+          { "title": "Log Out", "url": "/log-out" },
+          { "title": "Refer a Friend", "url": "/refer-a-friend" }
+        ]
+      }
+    ]
+  },
+  "products": [
+    {
+      "id": "probiotic",
+      "name": "Probiotic",
+      "img": "probiotic.png",
+      "price": "$20.00",
+      "description": "<b>ANAMIVA® Probiotic</b> is a specialized formulation containing LactoSpore®, B. Coagulans. This super bacteria strain is resilient during its journey through harsh, acidic & high-temp conditions of the digestive system where it can then embed and activate in the intestine to fight bad bacteria."
+    }
+  ]
+}

@@ -178,7 +178,7 @@ export default function Navbar(props) {
     <div
       className={classes.page}
       onMouseEnter={handleOpen}
-      // onMouseLeave={handleClose}
+      onMouseLeave={handleClose}
     >
       <AppBar position="sticky" className={classes.root}>
         <Toolbar className={classes.tabs_scroll}>
@@ -193,9 +193,11 @@ export default function Navbar(props) {
                 <div>{leftContent}</div>
               </Tabs>
             </Grid>
-            <Grid xs item>
-              <img src={logo} alt="Anamiva" className={classes.logo} />
-            </Grid>
+            <a href={"/"}>
+              <Grid xs>
+                <img src={logo} alt="Anamiva" className={classes.logo} />
+              </Grid>
+            </a>
             <Grid container justify="flex-end" xs item>
               <Tabs value={value}>
                 <div>{rightContent}</div>
