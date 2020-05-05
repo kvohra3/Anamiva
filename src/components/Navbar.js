@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
 import {
   AppBar,
   Tabs,
@@ -10,10 +10,9 @@ import {
   Toolbar,
   Grid,
   Typography,
-} from "@material-ui/core";
-import logo from "../images/Anamiva_Logo.png";
+} from '@material-ui/core';
 
-import { AccountBox, ShoppingCart, Store, Event } from "@material-ui/icons";
+import { AccountBox, ShoppingCart, Store, Event } from '@material-ui/icons';
 const allIcons = {
   acctBox: <AccountBox />,
   shopCart: <ShoppingCart />,
@@ -23,70 +22,63 @@ const allIcons = {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    background: "transparent",
-    boxShadow: "none",
-    color: "black",
+    background: 'transparent',
+    boxShadow: 'none',
+    color: 'black',
   },
   navtitle: {
-    fontSize: "25px",
-    fontWeight: "600",
+    fontSize: '25px',
+    fontWeight: '600',
     background:
-      "linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)",
-    "-webkit-background-clip": "text",
-    "-webkit-text-fill-color": "transparent",
+      'linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)',
+    '-webkit-background-clip': 'text',
+    '-webkit-text-fill-color': 'transparent',
   },
   menuContainer: {
-    borderRadius: "0px",
-    borderTop: "thin solid black",
+    borderRadius: '0px',
+    borderTop: 'thin solid black',
   },
   tab: {
-    color: "black",
-    textTransform: "none",
-    "&:hover": {
-      borderBottom: "2px solid #F1BF1A",
+    color: 'black',
+    textTransform: 'none',
+    '&:hover': {
+      borderBottom: '2px solid #F1BF1A',
     },
-    "min-width": "0px",
+    'min-width': '0px',
   },
   tabs_top: {
-    background: "transparent",
-    transition: "background-color 0.5s ease",
+    background: 'transparent',
+    transition: 'background-color 0.5s ease',
   },
   tabs_scroll: {
-    background: "white",
-    transition: "background-color 0.5s ease",
+    background: 'white',
+    transition: 'background-color 0.5s ease',
   },
   title: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontFamily: "Zapfino",
-    fontSize: "185%",
-  },
-  logo: {
-    display: "flex",
-    marginLeft: "auto",
-    marginRight: "auto",
-    width: "25%%",
-    height: "48px",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontFamily: 'Zapfino',
+    fontSize: '185%',
   },
   menuPaper: {
-    borderRadius: "0px",
-    height: "10vw",
-    display: "flex",
-    margin: "auto",
+    borderRadius: '0px',
+    height: '10vw',
+    display: 'flex',
+    margin: 'auto',
   },
   menuItem: {
-    fontSize: "larger",
-    fontWeight: "bold",
-    textAlign: "center",
-    display: "inline-block",
-    "&:hover": {
-      borderBottom: "2px solid #F1BF1A",
+    fontSize: 'larger',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    display: 'inline-block',
+    '&:hover': {
+      borderBottom: '2px solid #F1BF1A',
     },
   },
   ticker: {
-    textAlign: "center",
-    backgroundColor: "black",
+    textAlign: 'center',
+    backgroundColor: 'black',
   },
 }));
 
@@ -98,7 +90,7 @@ export default function Navbar(props) {
   const [value, setValue] = useState(null);
   const [open, setOpen] = useState(true);
   const [listItems, setItems] = useState(null);
-  const [navPosition, setNavPosition] = useState("relative");
+  const [navPosition, setNavPosition] = useState('relative');
 
   const handleClose = () => {
     setOpen(false);
@@ -188,16 +180,17 @@ export default function Navbar(props) {
   useEffect(() => {
     const onScroll = (e) => {
       if (e.target.documentElement.scrollTop > 24) {
-        setNavPosition("fixed");
+        setNavPosition('fixed');
       } else {
-        setNavPosition("relative");
+        setNavPosition('relative');
       }
-      console.log("$$ scrollTop", e.target.documentElement.scrollTop);
+      console.log('$$ scrollTop', e.target.documentElement.scrollTop);
     };
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener('scroll', onScroll);
 
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, [navPosition]);
+
   return (
     <div>
       <div className={classes.ticker}>
@@ -205,7 +198,7 @@ export default function Navbar(props) {
           component="span"
           gutterBottom
           style={{
-            color: "white",
+            color: 'white',
           }}
         >
           {data.ticker}
@@ -221,15 +214,15 @@ export default function Navbar(props) {
             <Grid
               container
               direction="row"
-              justify="space-evenly"
+              justify="space-between"
               alignItems="center"
             >
-              <Grid container justify="flex-end" alignItems="center" xs item>
-                <Tabs value={value} style={{ width: "100%" }}>
+              <Grid container justify="flex-end" xs item>
+                <Tabs value={value}>
                   <div>{leftContent}</div>
                 </Tabs>
               </Grid>
-              <Grid xs style={{ textAlign: "center" }}>
+              <Grid xs style={{ textAlign: 'center' }}>
                 <Typography component="a" href="/" className={classes.navtitle}>
                   {data.title}
                 </Typography>
@@ -247,13 +240,13 @@ export default function Navbar(props) {
             hidden={!open}
           >
             {open && (
-              <div style={listItems ? {} : { display: "none" }}>
+              <div style={listItems ? {} : { display: 'none' }}>
                 <Paper elevation={3} className={classes.menuPaper}>
                   <Container
                     style={{
-                      margin: "auto",
-                      textAlign: "center",
-                      width: "50%",
+                      margin: 'auto',
+                      textAlign: 'center',
+                      width: '50%',
                     }}
                   >
                     <Grid
@@ -268,7 +261,7 @@ export default function Navbar(props) {
                               <Grid item xs onClick={handleClose}>
                                 <div
                                   style={{
-                                    margin: "auto",
+                                    margin: 'auto',
                                   }}
                                 >
                                   <Typography
