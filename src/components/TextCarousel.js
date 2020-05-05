@@ -1,49 +1,49 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import { Container, Grid, Typography, Paper } from '@material-ui/core';
-import { Star, StarBorder } from '@material-ui/icons';
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import { Container, Grid, Typography, Paper } from "@material-ui/core";
+import { Star, StarBorder } from "@material-ui/icons";
 import {
   CarouselProvider,
   Slider,
   Slide,
   ButtonBack,
   ButtonNext,
-} from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
+} from "pure-react-carousel";
+import "pure-react-carousel/dist/react-carousel.es.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   container: {
-    textAlign: 'center',
-    justifyContent: 'center',
-    boxSizing: 'border-box',
-    padding: '32px 28px 96px',
+    textAlign: "center",
+    justifyContent: "center",
+    boxSizing: "border-box",
+    padding: "32px 28px 96px",
   },
   header: {
-    display: 'flex',
-    width: '50%',
-    marginRight: 'auto',
-    marginLeft: 'auto',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    width: "50%",
+    marginRight: "auto",
+    marginLeft: "auto",
+    alignItems: "center",
+    justifyContent: "center",
     height: 50,
     padding: theme.spacing(4),
   },
   carouselGrid: {
-    display: 'flex',
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    display: "flex",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
   quote: {
-    fontFamily: 'Sentinel-Medium',
-    color: '#B88E5C',
-    fontSize: '74px',
+    fontFamily: "Sentinel-Medium",
+    color: "#B88E5C",
+    fontSize: "74px",
   },
   buttons: {
-    display: 'none',
+    // display: "none",
   },
 }));
 
@@ -77,16 +77,15 @@ export default function TextCarousel(props) {
             <Paper
               elevation={0}
               style={{
-                height: '15vh',
-                width: 'auto',
-                backgroundColor: 'rgb(184,176,158)',
+                height: "15vh",
+                width: "auto",
               }}
             >
               <Typography
                 component="h5"
                 variant="h5"
                 style={{
-                  fontSize: 'initial',
+                  fontSize: "initial",
                 }}
               >
                 {person.testimonial}
@@ -98,13 +97,11 @@ export default function TextCarousel(props) {
               component="h5"
               variant="h5"
               style={{
-                fontSize: 'initial',
+                fontSize: "initial",
               }}
             >
               - {person.name}
             </Typography>
-          </Grid>
-          <Grid item xs>
             {person.rating}
           </Grid>
         </Grid>
@@ -120,7 +117,7 @@ export default function TextCarousel(props) {
             component="h3"
             variant="h3"
             className={classes.header}
-            style={{ fontWeight: 'bold' }}
+            style={{ fontWeight: "bold" }}
           >
             {data.header}
           </Typography>
@@ -132,7 +129,7 @@ export default function TextCarousel(props) {
             totalSlides={carouselData.length}
             interval={3000}
             infinite={true}
-            isPlaying={true}
+            isPlaying={false}
           >
             <Grid
               container
@@ -140,7 +137,7 @@ export default function TextCarousel(props) {
               justify="space-between"
               alignItems="center"
               style={{
-                display: 'inline-flex',
+                display: "inline-flex",
               }}
             >
               <Grid item xs>
@@ -149,7 +146,7 @@ export default function TextCarousel(props) {
                   variant="h1"
                   className={classes.quote}
                   style={{
-                    textAlign: 'right',
+                    textAlign: "right",
                   }}
                 >
                   "
@@ -168,14 +165,13 @@ export default function TextCarousel(props) {
                   variant="h1"
                   className={classes.quote}
                   style={{
-                    textAlign: 'left',
+                    textAlign: "left",
                   }}
                 >
                   "
                 </Typography>
               </Grid>
             </Grid>
-
             <ButtonBack className={classes.buttons}>Back</ButtonBack>
             <ButtonNext className={classes.buttons}>Next</ButtonNext>
           </CarouselProvider>

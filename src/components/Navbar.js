@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -23,19 +23,25 @@ const allIcons = {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    position: "fixed",
     background: "transparent",
     boxShadow: "none",
     color: "black",
+  },
+  navtitle: {
+    fontSize: "25px",
+    fontWeight: "600",
+    background:
+      "linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)",
+    "-webkit-background-clip": "text",
+    "-webkit-text-fill-color": "transparent",
   },
   menuContainer: {
     borderRadius: "0px",
     borderTop: "thin solid black",
   },
   tab: {
-    fontFamily: "Futura-Bold",
+    color: "black",
     textTransform: "none",
-    fontSize: "large",
     "&:hover": {
       borderBottom: "2px solid #F1BF1A",
     },
@@ -78,6 +84,10 @@ const useStyles = makeStyles((theme) => ({
       borderBottom: "2px solid #F1BF1A",
     },
   },
+  ticker: {
+    textAlign: "center",
+    backgroundColor: "black",
+  },
 }));
 
 export default function Navbar(props) {
@@ -88,8 +98,9 @@ export default function Navbar(props) {
   const [value, setValue] = useState(null);
   const [open, setOpen] = useState(true);
   const [listItems, setItems] = useState(null);
+  const [navPosition, setNavPosition] = useState("relative");
 
-  const handleClose = (event) => {
+  const handleClose = () => {
     setOpen(false);
     setValue(null);
     setItems(null);
@@ -174,82 +185,112 @@ export default function Navbar(props) {
     );
   });
 
+  useEffect(() => {
+    const onScroll = (e) => {
+      if (e.target.documentElement.scrollTop > 24) {
+        setNavPosition("fixed");
+      } else {
+        setNavPosition("relative");
+      }
+      console.log("$$ scrollTop", e.target.documentElement.scrollTop);
+    };
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [navPosition]);
   return (
-    <div
-      className={classes.page}
-      onMouseEnter={handleOpen}
-      onMouseLeave={handleClose}
-    >
-      <AppBar position="sticky" className={classes.root}>
-        <Toolbar className={classes.tabs_scroll}>
-          <Grid
-            container
-            direction="row"
-            justify="space-between"
-            alignItems="center"
-          >
-            <Grid container justify="space-evenly" alignItems="center" xs item>
-              <Tabs value={value} style={{ width: "100%" }}>
-                <div>{leftContent}</div>
-              </Tabs>
-            </Grid>
-            <a href={"/"}>
-              <Grid xs>
-                <img src={logo} alt="Anamiva" className={classes.logo} />
-              </Grid>
-            </a>
-            <Grid container justify="flex-end" xs item>
-              <Tabs value={value}>
-                <div>{rightContent}</div>
-              </Tabs>
-            </Grid>
-          </Grid>
-        </Toolbar>
+    <div>
+      <div className={classes.ticker}>
         <Typography
-          component="div"
-          className={classes.menuContainer}
-          hidden={!open}
+          component="span"
+          gutterBottom
+          style={{
+            color: "white",
+          }}
         >
-          {open && (
-            <div style={listItems ? {} : { display: "none" }}>
-              <Paper elevation={3} className={classes.menuPaper}>
-                <Container
-                  style={{ margin: "auto", textAlign: "center", width: "50%" }}
-                >
-                  <Grid
-                    container
-                    direction="row"
-                    justify="center"
-                    alignItems="center"
-                  >
-                    {listItems
-                      ? listItems.map((d, i) => {
-                          return (
-                            <Grid item xs onClick={handleClose}>
-                              <div
-                                style={{
-                                  margin: "auto",
-                                }}
-                              >
-                                <Typography
-                                  component="h4"
-                                  variant="h4"
-                                  className={classes.menuItem}
-                                >
-                                  {d.title}
-                                </Typography>
-                              </div>
-                            </Grid>
-                          );
-                        })
-                      : null}
-                  </Grid>
-                </Container>
-              </Paper>
-            </div>
-          )}
+          {data.ticker}
         </Typography>
-      </AppBar>
+      </div>
+      <div
+        className={classes.page}
+        onMouseEnter={handleOpen}
+        onMouseLeave={handleClose}
+      >
+        <AppBar className={classes.root} style={{ position: navPosition }}>
+          <Toolbar className={classes.tabs_scroll}>
+            <Grid
+              container
+              direction="row"
+              justify="space-evenly"
+              alignItems="center"
+            >
+              <Grid container justify="flex-end" alignItems="center" xs item>
+                <Tabs value={value} style={{ width: "100%" }}>
+                  <div>{leftContent}</div>
+                </Tabs>
+              </Grid>
+              <Grid xs style={{ textAlign: "center" }}>
+                <Typography component="a" href="/" className={classes.navtitle}>
+                  {data.title}
+                </Typography>
+              </Grid>
+              <Grid container xs item>
+                <Tabs value={value}>
+                  <div>{rightContent}</div>
+                </Tabs>
+              </Grid>
+            </Grid>
+          </Toolbar>
+          <Typography
+            component="div"
+            className={classes.menuContainer}
+            hidden={!open}
+          >
+            {open && (
+              <div style={listItems ? {} : { display: "none" }}>
+                <Paper elevation={3} className={classes.menuPaper}>
+                  <Container
+                    style={{
+                      margin: "auto",
+                      textAlign: "center",
+                      width: "50%",
+                    }}
+                  >
+                    <Grid
+                      container
+                      direction="row"
+                      justify="center"
+                      alignItems="center"
+                    >
+                      {listItems
+                        ? listItems.map((d, i) => {
+                            return (
+                              <Grid item xs onClick={handleClose}>
+                                <div
+                                  style={{
+                                    margin: "auto",
+                                  }}
+                                >
+                                  <Typography
+                                    component="h4"
+                                    variant="h4"
+                                    className={classes.menuItem}
+                                  >
+                                    {d.title}
+                                  </Typography>
+                                </div>
+                              </Grid>
+                            );
+                          })
+                        : null}
+                    </Grid>
+                  </Container>
+                </Paper>
+              </div>
+            )}
+          </Typography>
+        </AppBar>
+      </div>
     </div>
   );
 }

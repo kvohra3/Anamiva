@@ -1,14 +1,14 @@
 {
   "nav": {
-    "title": "Anamiva",
-    "img": "random.jpg",
+    "ticker": "Get 10% off your first purchase by using code FIRST10",
+    "title": "anamiva",
     "leftContent": [
       {
-        "title": "About",
+        "title": "Meet us",
         "content": [
           {
             "url": "/founders",
-            "title": "Meet Our Founders"
+            "title": "The Founders: Sanjiv Devraj, Sarin Devraj, Samay Devraj"
           },
           {
             "title": "Our Mission",
@@ -38,15 +38,11 @@
         ]
       },
       {
-        "title": "Quiz",
+        "title": "Gut Check",
         "url": "/quiz"
       }
     ],
     "rightContent": [
-      {
-        "title": "Book Appointment",
-        "url": "/appointment"
-      },
       {
         "title": "Shop",
         "url": "/shop"
@@ -61,7 +57,7 @@
         "icon": "acctBox",
         "content": [
           {
-            "title": "Billing & Shipping",
+            "title": "Sign Up",
             "url": "/billing-and-shipping"
           },
           { "title": "Password", "url": "/password" },
@@ -103,22 +99,22 @@
     "title": "How it works?",
     "content": [
       {
-        "title": "title 1",
+        "title": "Accessible",
         "description": "Some text to describe the content.ome text to describe the content.ome text to describe the content.ome text to describe the content.ome text to describe the content",
         "icon": "allInclusive"
       },
       {
-        "title": "title 2",
+        "title": "Affordable",
         "description": "Some more text to describe the content",
         "icon": "chargingBatteryFull"
       },
       {
-        "title": "title 3",
+        "title": "Personalized",
         "description": "Some of this text to describe the content",
         "icon": "deviceHub"
       },
       {
-        "title": "title 4",
+        "title": "Preventive",
         "description": "Some of this text to describe the content",
         "icon": "dashboard"
       }

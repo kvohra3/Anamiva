@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
   main: {
     overflowX: "hidden",
     overflowY: "hidden",
-    backgroundColor: "rgb(184,176,158)",
   },
 }));
 

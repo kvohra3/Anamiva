@@ -84,6 +84,7 @@ let theme = createMuiTheme({
     },
   },
 });
+
 theme = responsiveFontSizes(theme);
 
 function App() {
