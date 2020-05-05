@@ -44,15 +44,6 @@
     ],
     "rightContent": [
       {
-        "title": "Shop",
-        "url": "/shop"
-      },
-      {
-        "title": "Cart",
-        "icon": "shopCart",
-        "url": "/cart"
-      },
-      {
         "title": "Account",
         "icon": "acctBox",
         "content": [
@@ -64,6 +55,15 @@
           { "title": "Log Out", "url": "/log-out" },
           { "title": "Refer a Friend", "url": "/refer-a-friend" }
         ]
+      },
+      {
+        "title": "Cart",
+        "icon": "shopCart",
+        "url": "/cart"
+      },
+      {
+        "title": "Shop",
+        "url": "/shop"
       }
     ]
   },

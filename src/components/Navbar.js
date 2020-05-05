@@ -42,7 +42,10 @@ const useStyles = makeStyles((theme) => ({
     color: 'black',
     textTransform: 'none',
     '&:hover': {
-      borderBottom: '2px solid #F1BF1A',
+      background:
+        'linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)',
+      '-webkit-background-clip': 'text',
+      '-webkit-text-fill-color': 'transparent',
     },
     'min-width': '0px',
   },
