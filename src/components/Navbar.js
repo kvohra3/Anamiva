@@ -52,6 +52,19 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     'align-items': 'center',
     'justify-content': 'center',
+    '&:hover': {
+      color: 'transparent',
+    },
+  },
+  tabTextRight: {
+    color: 'black',
+    fontWeight: 500,
+    display: 'flex',
+    'align-items': 'center',
+    'justify-content': 'center',
+    '&:hover': {
+      color: '#F1BF1A',
+    },
   },
   shopText: {
     color: 'black',
@@ -60,11 +73,6 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     position: 'absolute',
     background: '#F1BF1A',
-    '&:hover': {
-      background:
-        'linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)',
-      '-webkit-background-clip': 'text',
-    },
   },
   shopTab: {
     height: '100%',
@@ -74,19 +82,6 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'none',
     'min-width': '0px',
     height: '72px',
-    '&:hover': {
-      background:
-        'linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)',
-      '-webkit-background-clip': 'text',
-    },
-  },
-  tabIcon: {
-    '&:hover': {
-      background:
-        'linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)',
-      '-webkit-background-clip': 'text',
-      '-webkit-text-fill-color': 'transparent',
-    },
   },
   tabs: {
     background: 'white',
@@ -197,19 +192,18 @@ export default function Navbar(props) {
 
   const leftContent = data.leftContent.map((c, index) => {
     const label = c.arrowDropDown ? (
-      <IconButton
-        size="small"
-        className={classes.tabText}
-        // onMouseEnter={setIconColor}
-        // onMouseLeave={resetIconColor}
-      >
+      <IconButton size="small" className={classes.tabText}>
         {c.title}
         <ArrowDropDownOutlined
           id={`icon-arrowdown-${index}`}
           fontSize="inherit"
           color="inherit"
           className={classes.tabIcon}
-          style={{ 'padding-left': '10px' }}
+          style={{
+            '&:before': { display: 'inital' },
+            'padding-top': '2px',
+            'padding-left': '10px',
+          }}
         />
       </IconButton>
     ) : (
@@ -232,7 +226,7 @@ export default function Navbar(props) {
 
   const rightContent = data.rightContent.map((c, index) => {
     const label = c.icon ? (
-      <IconButton size="small" className={classes.tabText}>
+      <IconButton size="small" className={classes.tabTextRight}>
         {allIcons[c.icon]}
       </IconButton>
     ) : (
