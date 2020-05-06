@@ -14,16 +14,16 @@ import {
 } from '@material-ui/core';
 
 import {
-  AccountBox,
-  ShoppingCart,
   Store,
   Event,
   ArrowDropDownOutlined,
+  AccountCircleOutlined,
+  WorkOutlineOutlined,
 } from '@material-ui/icons';
 
 const allIcons = {
-  acctBox: <AccountBox />,
-  shopCart: <ShoppingCart />,
+  acctBox: <AccountCircleOutlined />,
+  shopCart: <WorkOutlineOutlined />,
   store: <Store />,
   event: <Event />,
 };
@@ -46,12 +46,42 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '0px',
     borderTop: 'thin solid black',
   },
-  tab: {
+  tabText: {
     color: 'black',
+    fontWeight: 500,
+    display: 'flex',
+    'align-items': 'center',
+    'justify-content': 'center',
+  },
+  shopText: {
+    color: 'black',
+    fontWeight: 800,
+    display: 'flex',
+    'align-items': 'center',
+    'justify-content': 'center',
+  },
+  shopTab: {
+    background: '#F1BF1A',
+    height: '100%',
+    width: '180px',
+    '&:hover': {
+      background: 'white',
+      '& $shopText': {
+        background:
+          'linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)',
+        '-webkit-background-clip': 'text',
+      },
+    },
+  },
+  tab: {
     textTransform: 'none',
     'min-width': '0px',
     height: '72px',
-    display: 'inline-block',
+    '&:hover': {
+      background:
+        'linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)',
+      '-webkit-background-clip': 'text',
+    },
   },
   tabIcon: {
     '&:hover': {
@@ -61,11 +91,7 @@ const useStyles = makeStyles((theme) => ({
       '-webkit-text-fill-color': 'transparent',
     },
   },
-  tabs_top: {
-    background: 'transparent',
-    transition: 'background-color 0.5s ease',
-  },
-  tabs_scroll: {
+  tabs: {
     background: 'white',
     transition: 'background-color 0.5s ease',
   },
@@ -149,28 +175,48 @@ export default function Navbar(props) {
     const { currentTarget } = event;
     const id = currentTarget.id;
     const listItems = subLinkObj[id];
-    console.log('$$ handle open', currentTarget.href);
 
-    if (!currentTarget.href) {
-      setItems(listItems);
-      setOpen(true);
-      setValue(id);
+    setItems(listItems);
+    setOpen(true);
+    setValue(id);
+  };
+
+  const setIconColor = (event) => {
+    const svg = event.target.querySelector('svg');
+    console.log('$$ svg set', svg);
+    if (svg) {
+      svg.style.color = 'red';
+    }
+  };
+
+  const resetIconColor = (event) => {
+    const svg = event.target.querySelector('svg');
+
+    console.log('$$ svg reset', svg);
+    if (svg) {
+      svg.style.color = 'black';
     }
   };
 
   const leftContent = data.leftContent.map((c, index) => {
     const label = c.arrowDropDown ? (
-      <IconButton size="small" className={classes.tab}>
+      <IconButton
+        size="small"
+        className={classes.tabText}
+        // onMouseEnter={setIconColor}
+        // onMouseLeave={resetIconColor}
+      >
         {c.title}
         <ArrowDropDownOutlined
           id={`icon-arrowdown-${index}`}
           fontSize="inherit"
           color="inherit"
           className={classes.tabIcon}
+          style={{ 'padding-left': '10px' }}
         />
       </IconButton>
     ) : (
-      <IconButton size="small" className={classes.tab}>
+      <IconButton size="small" className={classes.tabText}>
         {c.title}
       </IconButton>
     );
@@ -188,19 +234,12 @@ export default function Navbar(props) {
   });
 
   const rightContent = data.rightContent.map((c, index) => {
-    const style = c.id
-      ? {
-          background: '#F1BF1A',
-          width: '180px',
-          fontWeight: 800,
-        }
-      : {};
     const label = c.icon ? (
-      <IconButton size="small" className={classes.tab}>
+      <IconButton size="small" className={classes.tabText}>
         {allIcons[c.icon]}
       </IconButton>
     ) : (
-      <IconButton size="small" className={classes.tab}>
+      <IconButton size="small" className={classes.shopText}>
         {c.title}
       </IconButton>
     );
@@ -212,8 +251,7 @@ export default function Navbar(props) {
         label={label}
         title={c.title}
         href={c.url ? c.url : null}
-        className={classes.tab}
-        style={style}
+        className={c.id ? classes.shopTab : classes.tab}
       />
     );
   });
@@ -247,6 +285,7 @@ export default function Navbar(props) {
           style={{
             color: 'white',
             fontSize: '14px',
+            'letter-spacing': '0.16em',
           }}
         >
           {data.ticker}
@@ -258,7 +297,7 @@ export default function Navbar(props) {
         onMouseLeave={handleClose}
       >
         <AppBar className={classes.root} style={{ position: navPosition }}>
-          <Toolbar className={classes.tabs_scroll}>
+          <Toolbar className={classes.tabs}>
             <Grid
               container
               direction="row"

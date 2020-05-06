@@ -13,7 +13,6 @@ import {
 import Home from './pages/Home/Home';
 import Quiz from './pages/Quiz';
 import Shop from './pages/Shop/Shop';
-import { FilterNone } from '@material-ui/icons';
 
 const routes = [
   {
@@ -85,17 +84,6 @@ let theme = createMuiTheme({
     },
   },
   overrides: {
-    MuiTab: {
-      wrapper: {
-        color: 'black',
-        '&:hover': {
-          background:
-            'linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)',
-          '-webkit-background-clip': 'text',
-          '-webkit-text-fill-color': 'transparent',
-        },
-      },
-    },
     MuiIconButton: {
       root: {
         fontFamily: 'Futura',
@@ -107,6 +95,7 @@ let theme = createMuiTheme({
         },
         transition: 'none',
         padding: 0,
+        'border-radius': 0,
       },
       sizeSmall: {
         fontSize: '14px',
