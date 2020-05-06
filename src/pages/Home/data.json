@@ -1,10 +1,11 @@
 {
   "nav": {
-    "ticker": "Get 10% off your first purchase by using code FIRST10",
+    "ticker": "GET 10% OFF YOUR FIRST PURCHASE BY USING CODE FIRST10",
     "title": "anamiva",
     "leftContent": [
       {
         "title": "Meet us",
+        "arrowDropDown": true,
         "content": [
           {
             "url": "/founders",
@@ -22,6 +23,7 @@
       },
       {
         "title": "Learn",
+        "arrowDropDown": true,
         "content": [
           {
             "url": "/why-gut-health",
@@ -62,6 +64,7 @@
         "url": "/cart"
       },
       {
+        "id": "shop",
         "title": "Shop",
         "url": "/shop"
       }

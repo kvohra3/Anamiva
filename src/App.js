@@ -1,30 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   useLocation,
-} from "react-router-dom";
+} from 'react-router-dom';
 import {
   createMuiTheme,
   responsiveFontSizes,
   ThemeProvider,
-} from "@material-ui/core/styles";
-import Home from "./pages/Home/Home";
-import Quiz from "./pages/Quiz";
-import Shop from "./pages/Shop/Shop";
+} from '@material-ui/core/styles';
+import Home from './pages/Home/Home';
+import Quiz from './pages/Quiz';
+import Shop from './pages/Shop/Shop';
+import { FilterNone } from '@material-ui/icons';
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     page: <Home />,
   },
   {
-    path: "/quiz",
+    path: '/quiz',
     page: <Quiz />,
   },
   {
-    path: "/shop",
+    path: '/shop',
     page: <Shop />,
   },
 ];
@@ -33,7 +34,7 @@ function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    console.log("$$ using effect");
+    console.log('$$ using effect');
     window.scrollTo(0, 0);
   }, [pathname]);
 
@@ -42,45 +43,75 @@ function ScrollToTop() {
 
 let theme = createMuiTheme({
   typography: {
-    fontFamily: "Futura",
+    fontFamily: 'Futura',
     h1: {
-      fontFamily: "Futura",
+      fontFamily: 'Futura',
     },
     h2: {
-      fontFamily: "Futura",
+      fontFamily: 'Futura',
     },
     h3: {
-      fontFamily: "Futura",
+      fontFamily: 'Futura',
     },
     h4: {
-      fontFamily: "Futura",
+      fontFamily: 'Futura',
     },
     h5: {
-      fontFamily: "Futura",
+      fontFamily: 'Futura',
     },
     h6: {
-      fontFamily: "Futura",
+      fontFamily: 'Futura',
     },
     subtitle1: {
-      fontFamily: "Futura",
+      fontFamily: 'Futura',
     },
     subtitle2: {
-      fontFamily: "Futura",
+      fontFamily: 'Futura',
     },
     body1: {
-      fontFamily: "Futura",
+      fontFamily: 'Futura',
     },
     body2: {
-      fontFamily: "Futura",
+      fontFamily: 'Futura',
     },
     button: {
-      fontFamily: "Futura",
+      fontFamily: 'Futura',
     },
     caption: {
-      fontFamily: "Futura",
+      fontFamily: 'Futura',
     },
     overline: {
-      fontFamily: "Futura",
+      fontFamily: 'Futura',
+    },
+  },
+  overrides: {
+    MuiTab: {
+      wrapper: {
+        color: 'black',
+        '&:hover': {
+          background:
+            'linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)',
+          '-webkit-background-clip': 'text',
+          '-webkit-text-fill-color': 'transparent',
+        },
+      },
+    },
+    MuiIconButton: {
+      root: {
+        fontFamily: 'Futura',
+        '&:hover': {
+          background:
+            'linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)',
+          '-webkit-background-clip': 'text',
+          '-webkit-text-fill-color': 'transparent',
+        },
+        transition: 'none',
+        padding: 0,
+      },
+      sizeSmall: {
+        fontSize: '14px',
+        padding: 0,
+      },
     },
   },
 });

@@ -10,9 +10,17 @@ import {
   Toolbar,
   Grid,
   Typography,
+  IconButton,
 } from '@material-ui/core';
 
-import { AccountBox, ShoppingCart, Store, Event } from '@material-ui/icons';
+import {
+  AccountBox,
+  ShoppingCart,
+  Store,
+  Event,
+  ArrowDropDownOutlined,
+} from '@material-ui/icons';
+
 const allIcons = {
   acctBox: <AccountBox />,
   shopCart: <ShoppingCart />,
@@ -27,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'black',
   },
   navtitle: {
-    fontSize: '25px',
+    fontSize: '36px',
     fontWeight: '600',
     background:
       'linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)',
@@ -41,13 +49,17 @@ const useStyles = makeStyles((theme) => ({
   tab: {
     color: 'black',
     textTransform: 'none',
+    'min-width': '0px',
+    height: '72px',
+    display: 'inline-block',
+  },
+  tabIcon: {
     '&:hover': {
       background:
         'linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)',
       '-webkit-background-clip': 'text',
       '-webkit-text-fill-color': 'transparent',
     },
-    'min-width': '0px',
   },
   tabs_top: {
     background: 'transparent',
@@ -82,6 +94,10 @@ const useStyles = makeStyles((theme) => ({
   ticker: {
     textAlign: 'center',
     backgroundColor: 'black',
+    'min-height': '44px',
+    display: 'flex',
+    'align-items': 'center',
+    'justify-content': 'center',
   },
 }));
 
@@ -133,19 +149,37 @@ export default function Navbar(props) {
     const { currentTarget } = event;
     const id = currentTarget.id;
     const listItems = subLinkObj[id];
+    console.log('$$ handle open', currentTarget.href);
 
-    setItems(listItems);
-    setOpen(true);
-    setValue(id);
+    if (!currentTarget.href) {
+      setItems(listItems);
+      setOpen(true);
+      setValue(id);
+    }
   };
 
   const leftContent = data.leftContent.map((c, index) => {
+    const label = c.arrowDropDown ? (
+      <IconButton size="small" className={classes.tab}>
+        {c.title}
+        <ArrowDropDownOutlined
+          id={`icon-arrowdown-${index}`}
+          fontSize="inherit"
+          color="inherit"
+          className={classes.tabIcon}
+        />
+      </IconButton>
+    ) : (
+      <IconButton size="small" className={classes.tab}>
+        {c.title}
+      </IconButton>
+    );
     return (
       <Tab
         id={`left-${index}`}
         onMouseEnter={handleOpen}
         key={`left-${index}`}
-        label={c.title}
+        label={label}
         title={c.title}
         href={c.url ? c.url : null}
         className={classes.tab}
@@ -154,28 +188,32 @@ export default function Navbar(props) {
   });
 
   const rightContent = data.rightContent.map((c, index) => {
-    if (c.icon) {
-      return (
-        <Tab
-          id={`right-${index}`}
-          onMouseEnter={handleOpen}
-          key={`right-${index}`}
-          icon={allIcons[c.icon]}
-          title={c.title}
-          href={c.url ? c.url : null}
-          className={classes.tab}
-        />
-      );
-    }
+    const style = c.id
+      ? {
+          background: '#F1BF1A',
+          width: '180px',
+          fontWeight: 800,
+        }
+      : {};
+    const label = c.icon ? (
+      <IconButton size="small" className={classes.tab}>
+        {allIcons[c.icon]}
+      </IconButton>
+    ) : (
+      <IconButton size="small" className={classes.tab}>
+        {c.title}
+      </IconButton>
+    );
     return (
       <Tab
         id={`right-${index}`}
         onMouseEnter={handleOpen}
         key={`right-${index}`}
-        label={c.title}
+        label={label}
         title={c.title}
         href={c.url ? c.url : null}
         className={classes.tab}
+        style={style}
       />
     );
   });
@@ -189,19 +227,26 @@ export default function Navbar(props) {
       }
       console.log('$$ scrollTop', e.target.documentElement.scrollTop);
     };
+
+    const onHover = (e) => {
+      console.log('$$ hover e', e);
+    };
+    window.addEventListener('hover', onHover);
     window.addEventListener('scroll', onScroll);
 
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
   }, [navPosition]);
 
   return (
     <div>
       <div className={classes.ticker}>
         <Typography
-          component="span"
-          gutterBottom
+          component="p"
           style={{
             color: 'white',
+            fontSize: '14px',
           }}
         >
           {data.ticker}
@@ -226,9 +271,15 @@ export default function Navbar(props) {
                 </Tabs>
               </Grid>
               <Grid xs style={{ textAlign: 'center' }}>
-                <Typography component="a" href="/" className={classes.navtitle}>
-                  {data.title}
-                </Typography>
+                <IconButton>
+                  <Typography
+                    component="a"
+                    href="/"
+                    className={classes.navtitle}
+                  >
+                    {data.title}
+                  </Typography>
+                </IconButton>
               </Grid>
               <Grid container xs item>
                 <Tabs value={value}>
