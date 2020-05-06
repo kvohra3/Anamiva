@@ -11,6 +11,9 @@ import {
   Grid,
   Typography,
   IconButton,
+  Popper,
+  MenuList,
+  MenuItem,
 } from '@material-ui/core';
 
 import {
@@ -100,14 +103,19 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     margin: 'auto',
   },
+  menuItemContainer: {
+    '&:hover': {
+      background:
+        'linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)',
+      '-webkit-background-clip': 'text',
+      '-webkit-text-fill-color': 'transparent',
+    },
+  },
   menuItem: {
-    fontSize: 'larger',
-    fontWeight: 'bold',
+    fontSize: '14px',
+    fontWeight: 500,
     textAlign: 'center',
     display: 'inline-block',
-    '&:hover': {
-      borderBottom: '2px solid #F1BF1A',
-    },
   },
   ticker: {
     textAlign: 'center',
@@ -117,6 +125,7 @@ const useStyles = makeStyles((theme) => ({
     'align-items': 'center',
     'justify-content': 'center',
   },
+  popper: {},
 }));
 
 export default function Navbar(props) {
@@ -128,11 +137,13 @@ export default function Navbar(props) {
   const [open, setOpen] = useState(true);
   const [listItems, setItems] = useState(null);
   const [navPosition, setNavPosition] = useState('relative');
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClose = () => {
     setOpen(false);
     setValue(null);
     setItems(null);
+    setAnchorEl(null);
   };
 
   const getSubLeftContent = () => {
@@ -168,26 +179,10 @@ export default function Navbar(props) {
     const id = currentTarget.id;
     const listItems = subLinkObj[id];
 
+    setAnchorEl(currentTarget);
     setItems(listItems);
     setOpen(true);
     setValue(id);
-  };
-
-  const setIconColor = (event) => {
-    const svg = event.target.querySelector('svg');
-    console.log('$$ svg set', svg);
-    if (svg) {
-      svg.style.color = 'red';
-    }
-  };
-
-  const resetIconColor = (event) => {
-    const svg = event.target.querySelector('svg');
-
-    console.log('$$ svg reset', svg);
-    if (svg) {
-      svg.style.color = 'black';
-    }
   };
 
   const leftContent = data.leftContent.map((c, index) => {
@@ -318,54 +313,41 @@ export default function Navbar(props) {
               </Grid>
             </Grid>
           </Toolbar>
-          <Typography
-            component="div"
-            className={classes.menuContainer}
-            hidden={!open}
+          <Popper
+            open={open}
+            anchorEl={anchorEl}
+            placement="bottom"
+            className={classes.popper}
+            id="menu-list-grow"
           >
-            {open && (
-              <div style={listItems ? {} : { display: 'none' }}>
-                <Paper elevation={3} className={classes.menuPaper}>
-                  <Container
-                    style={{
-                      margin: 'auto',
-                      textAlign: 'center',
-                      width: '50%',
-                    }}
-                  >
-                    <Grid
-                      container
-                      direction="row"
-                      justify="center"
-                      alignItems="center"
-                    >
-                      {listItems
-                        ? listItems.map((d, i) => {
-                            return (
-                              <Grid item xs onClick={handleClose}>
-                                <div
-                                  style={{
-                                    margin: 'auto',
-                                  }}
-                                >
-                                  <Typography
-                                    component="h4"
-                                    variant="h4"
-                                    className={classes.menuItem}
-                                  >
-                                    {d.title}
-                                  </Typography>
-                                </div>
-                              </Grid>
-                            );
-                          })
-                        : null}
-                    </Grid>
-                  </Container>
-                </Paper>
-              </div>
-            )}
-          </Typography>
+            <div style={listItems ? {} : { display: 'none' }}>
+              <Paper>
+                <MenuList>
+                  {listItems
+                    ? listItems.map((d) => {
+                        return (
+                          <MenuItem
+                            className={classes.menuItemContainer}
+                            onClick={handleClose}
+                          >
+                            {' '}
+                            <div>
+                              <Typography
+                                component="h4"
+                                variant="h4"
+                                className={classes.menuItem}
+                              >
+                                {d.title}
+                              </Typography>
+                            </div>
+                          </MenuItem>
+                        );
+                      })
+                    : null}
+                </MenuList>
+              </Paper>
+            </div>
+          </Popper>
         </AppBar>
       </div>
     </div>
