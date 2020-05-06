@@ -56,22 +56,19 @@ const useStyles = makeStyles((theme) => ({
   shopText: {
     color: 'black',
     fontWeight: 800,
-    display: 'flex',
-    'align-items': 'center',
-    'justify-content': 'center',
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    background: '#F1BF1A',
+    '&:hover': {
+      background:
+        'linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)',
+      '-webkit-background-clip': 'text',
+    },
   },
   shopTab: {
-    background: '#F1BF1A',
     height: '100%',
     width: '180px',
-    '&:hover': {
-      background: 'white',
-      '& $shopText': {
-        background:
-          'linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)',
-        '-webkit-background-clip': 'text',
-      },
-    },
   },
   tab: {
     textTransform: 'none',
