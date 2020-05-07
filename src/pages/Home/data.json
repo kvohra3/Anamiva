@@ -101,26 +101,26 @@
     }
   },
   "banner": {
-    "title": "How it works?",
+    "title": "Applying ancient, holistic care to modern gut health",
     "content": [
       {
-        "title": "Accessible",
-        "description": "Some text to describe the content.ome text to describe the content.ome text to describe the content.ome text to describe the content.ome text to describe the content",
+        "title": "Curated",
+        "description": "Collection of plant-derived supplements",
         "icon": "allInclusive"
       },
       {
-        "title": "Affordable",
-        "description": "Some more text to describe the content",
+        "title": "Combat",
+        "description": "Defeat pathogens and build immunity",
         "icon": "chargingBatteryFull"
       },
       {
-        "title": "Personalized",
-        "description": "Some of this text to describe the content",
+        "title": "Proactive",
+        "description": "Support mood, joints, digestion, and more",
         "icon": "deviceHub"
       },
       {
-        "title": "Preventive",
-        "description": "Some of this text to describe the content",
+        "title": "Premium",
+        "description": "Clean ingredients leading to effective outcomes",
         "icon": "dashboard"
       }
     ]

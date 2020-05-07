@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
-import { Typography, Grid } from "@material-ui/core";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import { Typography, Grid } from '@material-ui/core';
 import {
   AllInclusive,
   BatteryChargingFull,
   DeviceHub,
   Dashboard,
-} from "@material-ui/icons";
+} from '@material-ui/icons';
 
 const icons = {
   allInclusive: <AllInclusive />,
@@ -20,34 +20,35 @@ export default function Banner(props) {
   const { data, backgroundColor, color } = props;
   const useStyles = makeStyles((theme) => ({
     container: {
-      textAlign: "center",
-      justifyContent: "center",
-      boxSizing: "border-box",
-      padding: "0px 28px 96px",
-      color: color ? color : "black",
-      backgroundColor: backgroundColor ? backgroundColor : "white",
+      textAlign: 'center',
+      justifyContent: 'center',
+      boxSizing: 'border-box',
+      color: color ? color : 'black',
+      backgroundColor: backgroundColor ? backgroundColor : 'white',
     },
     content: {
-      width: "100%",
-      position: "relative",
-      padding: theme.spacing(3),
-      paddingTop: "0px",
-      [theme.breakpoints.up("md")]: {
-        padding: theme.spacing(6),
-        paddingRight: 0,
-      },
+      width: '100%',
+      position: 'relative',
+      paddingBottom: '120px',
     },
     icons: {
-      transform: "scale(1.8)",
-      paddingBottom: "20px",
+      transform: 'scale(1.8)',
+      paddingBottom: '20px',
     },
     titles: {
-      marginBottom: "125px",
-      marginTop: "75px",
-      width: "50%",
-      marginLeft: "auto",
-      marginRight: "auto",
+      marginBottom: '125px',
+      marginTop: '75px',
+      width: '50%',
+      marginLeft: 'auto',
+      marginRight: 'auto',
     },
+    // border: {
+    //   'border-left': '2px solid #f51c40',
+    //   position: 'absolute',
+    //   top: '10px',
+    //   bottom: '10px',
+    //   left: '0px',
+    // },
   }));
   const classes = useStyles();
 
@@ -60,8 +61,8 @@ export default function Banner(props) {
             variant="h3"
             gutterBottom
             style={{
-              fontWeight: "bold",
-              paddingBottom: "20px",
+              fontWeight: 'bold',
+              paddingBottom: '20px',
             }}
           >
             {data.title}
@@ -78,7 +79,12 @@ export default function Banner(props) {
               style={
                 i === data.content.length - 1
                   ? {}
-                  : { borderRight: "2px solid" }
+                  : {
+                      borderRight: '2px solid',
+                      top: '10px',
+                      bottom: '10px',
+                      left: '0px',
+                    }
               }
             >
               <div className={classes.icons}>{icons[c.icon]}</div>
@@ -86,8 +92,8 @@ export default function Banner(props) {
                 component="h4"
                 variant="h5"
                 style={{
-                  fontWeight: "bold",
-                  paddingBottom: "20px",
+                  fontWeight: 'bold',
+                  paddingBottom: '20px',
                 }}
               >
                 {c.title}
@@ -95,6 +101,7 @@ export default function Banner(props) {
               <Typography component="p" variant="body1">
                 {c.description}
               </Typography>
+              {/* <div className={classes.border}></div> */}
             </Grid>
           ))}
         </Grid>

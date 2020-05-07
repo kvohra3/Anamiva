@@ -1,10 +1,10 @@
-import React from "react";
-import { Container } from "@material-ui/core";
-import Navbar from "../../components/Navbar";
-import Hero from "../../components/Hero";
-import Banner from "../../components/Banner";
-import TextCarousel from "../../components/TextCarousel";
-import CardCarousel from "../../components/CardCarousel";
+import React from 'react';
+import { Container } from '@material-ui/core';
+import Navbar from '../../components/Navbar';
+import Hero from '../../components/Hero';
+import Banner from '../../components/Banner';
+import TextCarousel from '../../components/TextCarousel';
+import CardCarousel from '../../components/CardCarousel';
 import {
   hero,
   banner,
@@ -12,19 +12,21 @@ import {
   testamonialCarousel,
   blogCarousel,
   nav,
-} from "./data.json";
+} from './data.json';
 
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   test: {
-    backgroundColor: "black",
-    backgroundSize: "cover",
-    color: "white",
+    backgroundColor: 'black',
+    backgroundSize: 'cover',
+    color: 'white',
   },
   main: {
-    overflowX: "hidden",
-    overflowY: "hidden",
+    width: '100%',
+    height: '100%',
+    // overflowX: 'hidden',
+    // overflowY: 'hidden',
   },
 }));
 
