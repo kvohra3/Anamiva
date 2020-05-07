@@ -71,21 +71,22 @@
     ]
   },
   "hero": {
-    "title": "Forge your resilience against ",
+    "title": "Forge your resilience",
+    "textCarosuelPrefix": "against ",
     "textCarosuel": [
       "joint pain",
       "inflammation",
       "stress",
       "indigestion",
-      "Bloating",
-      "Gas",
-      "Abdominal Pain",
-      "Fatigue",
-      "Constipation",
-      "Heartburn",
-      "Stress",
-      "Depression",
-      "Acid Reflux"
+      "bloating",
+      "gas",
+      "abdominal pain",
+      "fatigue",
+      "constipation",
+      "heartburn",
+      "stress",
+      "depression",
+      "acid reflux"
     ],
     "image": "https://source.unsplash.com/random",
     "imgText": "main image description",

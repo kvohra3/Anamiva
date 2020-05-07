@@ -3,17 +3,11 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Typography, Grid, Link, Button } from '@material-ui/core';
 import TextLoop from 'react-text-loop';
-import background from '../images/Tumeric_1296x728-header.jpg';
 
 const useStyles = makeStyles((theme) => ({
   mainFeatured: {
     position: 'relative',
-    color: theme.palette.common.white,
-    // textAlign: 'center',
-    backgroundImage: `url(${background})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
+    backgroundColor: '#F8F8F8',
     paddingTop: '100px',
     paddingBottom: '400px',
   },
@@ -28,8 +22,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   link: {
-    color: 'white',
     fontWeight: 'bold',
+  },
+  heroText: {
+    fontWeight: 800,
   },
   button: {
     display: 'inline-block',
@@ -49,10 +45,15 @@ const useStyles = makeStyles((theme) => ({
   items: {
     padding: '15px',
   },
+  textCarosuelContainer: {
+    display: 'inline',
+  },
   textCarosuel: {
-    margin: '10px',
-    textDecoration: 'underline',
-    fontWeight: 'bold',
+    fontWeight: 800,
+    background:
+      'linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)',
+    '-webkit-background-clip': 'text',
+    '-webkit-text-fill-color': 'transparent',
   },
 }));
 
@@ -70,29 +71,40 @@ export default function Hero(props) {
               variant="h2"
               color="inherit"
               gutterBottom
-              style={{ fontWeight: 'bold' }}
+              className={classes.heroText}
             >
               {data.title}
             </Typography>
           </Grid>
-          <TextLoop
-            springConfig={{ stiffness: 180, damping: 8 }}
-            adjustingSpeed={1000}
-            mask={true}
-            fade={false}
-          >
-            {data.textCarosuel.map((text) => (
-              <Typography
-                component="h1"
-                variant="h2"
-                color="inherit"
-                gutterBottom
-                className={classes.textCarosuel}
-              >
-                {text}
-              </Typography>
-            ))}
-          </TextLoop>
+          <Grid className={classes.items} xs item>
+            <Typography
+              component="span"
+              variant="h2"
+              color="inherit"
+              gutterBottom
+              className={classes.heroText}
+            >
+              {data.textCarosuelPrefix}
+            </Typography>
+            <TextLoop
+              springConfig={{ stiffness: 180, damping: 8 }}
+              adjustingSpeed={1000}
+              mask={true}
+              fade={false}
+            >
+              {data.textCarosuel.map((text) => (
+                <Typography
+                  component="h1"
+                  variant="h2"
+                  color="inherit"
+                  gutterBottom
+                  className={classes.textCarosuel}
+                >
+                  {text}
+                </Typography>
+              ))}
+            </TextLoop>
+          </Grid>
           <Grid className={classes.items} xs item>
             <Button
               className={classes.button}
