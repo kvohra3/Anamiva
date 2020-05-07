@@ -91,11 +91,12 @@
     "image": "https://source.unsplash.com/random",
     "imgText": "main image description",
     "button": {
-      "title": "Take the Quiz",
-      "url": "/quiz"
+      "title": "Shop Now",
+      "url": "/shop"
     },
     "link": {
-      "title": "Or, shop our catalog.",
+      "title": "Or, Take our Gut Check",
+      "icon": "arrowRight",
       "url": "/shop"
     }
   },

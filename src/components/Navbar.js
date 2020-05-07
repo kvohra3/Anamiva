@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     'align-items': 'center',
     'justify-content': 'center',
     '&:hover': {
-      color: 'transparent',
+      color: '#8064f1',
     },
   },
   tabTextRight: {

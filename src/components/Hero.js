@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Typography, Grid, Link, Button } from '@material-ui/core';
 import TextLoop from 'react-text-loop';
+import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 
 const useStyles = makeStyles((theme) => ({
   mainFeatured: {
     position: 'relative',
     backgroundColor: '#F8F8F8',
     paddingTop: '100px',
-    paddingBottom: '400px',
+    paddingBottom: '150px',
   },
   mainFeaturedContent: {
     margin: 0,
@@ -22,24 +23,38 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   link: {
+    position: 'relative',
     fontWeight: 'bold',
+    fontSize: '18px',
+    fontWeight: 800,
+    color: 'black',
+    '&:hover': {
+      color: '#8064f1',
+      background:
+        'linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)',
+      '-webkit-background-clip': 'text',
+      '-webkit-text-fill-color': 'transparent',
+    },
+  },
+  linkIcon: {
+    position: 'absolute',
+    top: '-17%',
   },
   heroText: {
     fontWeight: 800,
   },
   button: {
-    display: 'inline-block',
-    padding: '0.825em',
-    margin: '0 0.3em 0.3em 0',
-    borderRadius: '2em',
-    textDecoration: 'none',
+    width: '220px',
+    height: '56px',
     textAlign: 'center',
     textTransform: 'none',
     backgroundColor: 'black',
     color: 'white',
     '&:hover': {
-      backgroundColor: 'white',
-      color: 'black',
+      background:
+        'linear-gradient(to right, #f1bf1a -0.45%, #ff6361 48.94%, #8064f1 100.44%)',
+      '-webkit-background-clip': 'text',
+      '-webkit-text-fill-color': 'transparent',
     },
   },
   items: {
@@ -124,11 +139,15 @@ export default function Hero(props) {
           <Grid className={classes.items} xs item>
             <Link
               className={classes.link}
-              underline="always"
+              underline="none"
               variant="h6"
               href={data.link.url}
             >
               {data.link.title}
+              <ArrowRightAltIcon
+                fontSize="large"
+                className={classes.linkIcon}
+              />
             </Link>
           </Grid>
         </div>
